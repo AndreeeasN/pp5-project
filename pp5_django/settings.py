@@ -89,7 +89,9 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-# TEMPORARY
+WSGI_APPLICATION = 'pp5_django.wsgi.application'
+
+# Account Verification
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
@@ -99,8 +101,6 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
-
-WSGI_APPLICATION = 'pp5_django.wsgi.application'
 
 
 # Database
@@ -151,6 +151,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
