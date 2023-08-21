@@ -4,8 +4,8 @@ html{
 
 body{
     min-height: 100%;
-    display: flex;
-    flex-direction: column;
+    /* Temporary padding, adjust media query body padding too */
+    padding-top: 104px;
 }
 
 footer{
@@ -17,6 +17,16 @@ footer{
     margin: 0;
 }
 
+#desktop-nav{
+    color: white;
+    background-color: #0169A8;
+}
+
+#mobile-nav{
+    color: white;
+    background-color: #0169A8;
+}
+
 /* Carousel */
 .carousel-control-prev-icon, .carousel-control-next-icon{
     background-color: rgba(0, 0, 0, 0.5);
@@ -26,4 +36,19 @@ footer{
 .carousel-caption{
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
+}
+
+/* Media Queries */
+
+/* medium screen size */
+@media (min-width: 768px) {
+    /* padding for fixed header */
+    body {
+        padding-top: 120px;
+    }
+
+    #mobile-nav{
+        color: black;
+        background-color: white;
+    }
 }

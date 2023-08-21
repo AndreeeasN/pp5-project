@@ -8,7 +8,6 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
             <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon.ico' %}">
-            <title>SWEtooth Candy Co. Shop {% block extra_title %}{% endblock %}</title>
             <meta name="description" content="Your go-to shop for swedish sweets, treats and snacks!">
         {% endblock %}
 
@@ -32,57 +31,73 @@
         {% block extra_js %}
         {% endblock %}
 
+        <title>SWEtooth Candy Co. Shop {% block extra_title %}{% endblock %}</title>
     </head>
 
     <body>
-        <header>
-            <!-- Navigation bar -->
-            <nav class="navbar navbar-expand-sm bg-body-tertiary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/"><strong>SWE</strong>tooth Candy Co.</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <!-- Right-aligned items -->
-                        <ul class="navbar-nav ms-auto text-center align-items-center">
-                            <!-- Search -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <p><i class="fa-solid fa-magnifying-glass"></i></p>
-                                    <p>Search</p>
-                                </a>
-                            </li>
-                            {% if user.is_authenticated %}
-                            <!-- Profile -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <p><i class="fa-solid fa-user"></i></p>
-                                    <p>Profile</p>
-                                </a>
-                            </li>
-                            {% else %}
-                            <!-- Login -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'account_login' %}">
-                                    <p><i class="fa-regular fa-user"></i></p>
-                                    <p>Log In</p>
-                                </a>
-                            </li>
-                            {% endif %}
-                            <!-- Cart -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <p><i class="fa-solid fa-basket-shopping"></i></p>
-                                    <p>Cart</p>
-                                </a>
-                            </li>
-                        </ul>
+        <header class="container-fluid fixed-top px-0">
+            <!-- Navigation -->
+            <div id="site-header" class="text-center px-0 bg-body-primary">
+                <div class="row g-0">
+                    <!-- Logo -->
+                    <div class="col-12 col-md-4 py-2 d-flex align-items-center justify-content-center ">
+                        <a class="navbar-brand" href="{% url 'home'%}"><strong>SWE</strong>tooth Candy Co.</a>
+                    </div>
+
+                    <!-- Center Search Bar (hidden on small screens) -->
+                    <div class="col-12 col-md-4 d-none d-md-flex align-items-center">
+                        <form class="input-group">
+                            <input type="search" class="form-control" placeholder="Search">
+                            <button class="input-group-text border-1"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+
+                    <!-- Browse, Search, Login, Cart -->
+                    <div id="mobile-nav" class="col-12 col-md-4 p-2 px-sm-4 d-flex justify-content-end justify-content-md-center align-items-center">
+                        <!-- Browse (visible on mobile devices) -->
+                        <a class="nav-link text-reset mx-3 d-md-none me-auto" data-bs-toggle="offcanvas" href="#offcanvasBrowse" role="button" aria-controls="offcanvasBrowse">
+                            <p><i class="fa-solid fa-bars"></i></p>
+                            <p>Browse</p>
+                        </a>
+                        {% if user.is_authenticated %}
+                        <!-- Profile -->
+                        <a class="nav-link text-reset mx-3" href="#">
+                            <p><i class="fa-solid fa-user"></i></p>
+                            <p>Profile</p>
+                        </a>
+                        {% else %}
+                        <!-- Login -->
+                        <a class="nav-link text-reset mx-3" href="{% url 'account_login' %}">
+                            <p><i class="fa-regular fa-user"></i></p>
+                            <p>Log In</p>
+                        </a>
+                        {% endif %}
+                        <!-- Cart -->
+                        <a class="nav-link text-reset mx-3" href="#">
+                            <p><i class="fa-solid fa-basket-shopping"></i></p>
+                            <p>Cart</p>
+                        </a>
                     </div>
                 </div>
-            </nav>      
+                
+                <!-- Bottom Navbar (Desktop only) -->
+                <nav id="desktop-nav" class="d-none d-md-flex flex-row py-2 justify-content-evenly">
+                    <div class="p-2">
+                        <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasBrowse" role="button" aria-controls="offcanvasBrowse"><i class="fa-solid fa-bars"></i> Browse by Category</a>
+                    </div>
+                    <div class="p-2">
+                        <a class="nav-link" aria-current="page" href="/">Mixed Bags</a>
+                    </div>
+                    <div class="p-2">
+                        <a class="nav-link" aria-current="page" href="/">Pre-packaged Candy</a>
+                    </div>
+                    <div class="p-2">
+                        <a class="nav-link" aria-current="page" href="/">Gift Baskets</a>
+                    </div>
+                </nav>
+            </div>
         </header>
-
+        
         {% if messages %}
         <!-- Message box -->
             {% for message in messages %}
@@ -101,6 +116,17 @@
 
         {% block postloadjs %}
         {% endblock %}
+
+        <!-- "Browse by Category" offcanvas -->
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasBrowse" aria-labelledby="offcanvasBrowseLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasBrowseLabel">Browse by Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <p>Offcanvas body</p>
+            </div>
+        </div>
 
         <!-- Font-Awesome script -->
         <script src="https://kit.fontawesome.com/b7d2707d73.js" crossorigin="anonymous"></script>
