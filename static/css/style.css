@@ -38,6 +38,12 @@ footer{
     border-radius: 10px;
 }
 
+/* Offcanvas */
+.offcanvas-header{
+    color: white;
+    background-color: #0169A8;
+}
+
 /* Media Queries */
 
 /* medium screen size */
