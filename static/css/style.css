@@ -4,8 +4,7 @@ html{
 
 body{
     min-height: 100%;
-    /* Temporary padding, adjust media query body padding too */
-    padding-top: 104px;
+    padding-top: 144px;
 }
 
 footer{
@@ -50,7 +49,7 @@ footer{
 @media (min-width: 768px) {
     /* padding for fixed header */
     body {
-        padding-top: 120px;
+        padding-top: 136px;
     }
 
     #mobile-nav{
