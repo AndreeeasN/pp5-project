@@ -26,6 +26,19 @@ footer{
     background-color: #0169A8;
 }
 
+/* Buttons */
+.btn-account{
+    color: rgb(240, 240, 240);
+    background-color: #0169A8;
+    border: 1px solid white;
+}
+
+.btn-account:hover{
+    color: white;
+    background-color: #0169A8;
+    border: 1px solid #0169A8;
+}
+
 /* Carousel */
 .carousel-control-prev-icon, .carousel-control-next-icon{
     background-color: rgba(0, 0, 0, 0.5);
@@ -41,6 +54,13 @@ footer{
 .offcanvas-header{
     color: white;
     background-color: #0169A8;
+}
+
+/* Text shows up on failed log-in/signup attempts */
+.errorlist, .alert-danger ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 /* Media Queries */
