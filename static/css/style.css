@@ -27,13 +27,13 @@ footer{
 }
 
 /* Buttons */
-.btn-account{
+.btn-blue{
     color: rgb(240, 240, 240);
     background-color: #0169A8;
     border: 1px solid white;
 }
 
-.btn-account:hover{
+.btn-blue:hover{
     color: white;
     background-color: #0169A8;
     border: 1px solid #0169A8;
@@ -54,6 +54,25 @@ footer{
 .offcanvas-header{
     color: white;
     background-color: #0169A8;
+}
+
+/* Products */
+
+/* Container for product images */
+.square-img-container {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 100%;
+}
+
+/* Product images, square */
+.product-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 /* Text shows up on failed log-in/signup attempts */

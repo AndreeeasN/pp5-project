@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category, Brand, ProductTag
+from .models import Product, Category, Brand, ProductTag, ProductVariant
 
 
 @admin.register(Product)
@@ -39,5 +39,15 @@ class ProductTagAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'search_visible',
+    )
+    ordering = ('name',)
+
+
+@admin.register(ProductVariant)
+class ProductVariantAdmin(admin.ModelAdmin):
+    list_display = (
+        'friendly_name',
+        'name',
+        'variant_price',
     )
     ordering = ('name',)

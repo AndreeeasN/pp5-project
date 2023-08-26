@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header%}
+{% endblock %}
+
+{% block content%}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col ">
+            <h1 class="text-center py-4">Products</h1>
+            <hr class="mt-0">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10 offset-1">
+            <div class="row my-2"></div>
+            <div class="row">
+                <!-- Products -->
+                {% for product in products%}
+                    <div class="col-6 col-md-4 col-xl-3 p-1">
+                        <div class="card h-100 p-1">
+                            <!-- Product image -->
+                            <div class="square-img-container">
+                                {% if product.image %}
+                                <a href="">
+                                    <img class="product-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                </a>
+                                {% else %}
+                                <!-- Default if no image -->
+                                <a href="">
+                                    <img class="product-img p-4" src="{% static 'images/noimage.png' %}" alt="{{ product.name }}">
+                                </a>
+                                {% endif %}
+                            </div>
+                                <!-- Product name, price, add to cart/choose options -->
+                                <div class="card-body">
+                                <p class="fs-5">
+                                    <a class="link-dark link-underline-opacity-0" href="">
+                                        {{ product.name }}
+                                    </a>
+                                </p>
+                                <!-- If product has variants show minimum price-->
+                                {% if product.product_variants.all  %}
+                                    <p>
+                                        From {{ product.get_minimum_price }} EUR
+                                    </p>
+                                    <button class="w-100 btn btn-blue mb-2 py-2">Choose Options</button>
+
+                                {% else %}
+                                    <p>
+                                        {{ product.price }} EUR
+                                    </p>
+                                    
+                                    <button class="w-100 btn btn-blue">
+                                        Add to Cart
+                                    </button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
