@@ -1,0 +1,1 @@
+web: gunicorn pp5_django.wsgi:application
