@@ -96,16 +96,29 @@
                 <!-- Bottom Navbar (Desktop only) -->
                 <nav id="desktop-nav" class="d-none d-md-flex flex-row py-2 justify-content-evenly">
                     <div class="p-2">
-                        <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasBrowse" role="button" aria-controls="offcanvasBrowse"><i class="fa-solid fa-bars"></i> Browse by Category</a>
+                        <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasBrowse" role="button" aria-controls="offcanvasBrowse"><i class="fa-solid fa-bars"></i>
+                            Browse by Category
+                        </a>
                     </div>
                     <div class="p-2">
-                        <a class="nav-link" aria-current="page" href="/">Mixed Bags</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'products' %}?category=candy">
+                            Candy Assortment
+                        </a>
                     </div>
                     <div class="p-2">
-                        <a class="nav-link" aria-current="page" href="/">Pre-packaged Candy</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'products' %}?category=mixed-bags">
+                            Mixed Bags
+                        </a>
                     </div>
                     <div class="p-2">
-                        <a class="nav-link" aria-current="page" href="/">Gift Solutions</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'products' %}?category=packaged-candy">
+                            Pre-packaged Candy
+                        </a>
+                    </div>
+                    <div class="p-2">
+                        <a class="nav-link" aria-current="page" href="{% url 'products' %}?category=gift-solutions">
+                            Gift Solutions
+                        </a>
                     </div>
                 </nav>
             </div>

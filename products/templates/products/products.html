@@ -22,21 +22,19 @@
                         <div class="card h-100 p-1">
                             <!-- Product image -->
                             <div class="square-img-container">
+                                <a href="{% url 'product_detail' product.id %}">
                                 {% if product.image %}
-                                <a href="">
-                                    <img class="product-img p-2" src="{{ product.image.url }}" alt="{{ product.name }}">
-                                </a>
+                                   <img class="product-img p-2" src="{{ product.image.url }}" alt="{{ product.name }}">
                                 {% else %}
                                 <!-- Default if no image -->
-                                <a href="">
                                     <img class="product-img p-4" src="{% static 'images/noimage.png' %}" alt="{{ product.name }}">
-                                </a>
                                 {% endif %}
+                                </a>
                             </div>
                             <!-- Product name, price, add to cart/choose options -->
                             <div class="card-body d-flex flex-column">
                                 <p class="fs-5">
-                                    <a class="link-dark link-underline-opacity-0" href="">
+                                    <a class="link-dark link-underline-opacity-0" href="{% url 'product_detail' product.id %}">
                                         {{ product.name }}
                                     </a>
                                 </p>
