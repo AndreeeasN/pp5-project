@@ -8,7 +8,15 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col ">
-            <h1 class="text-center py-4">Products</h1>
+            <h1 class="text-center py-4">
+                {% if search_term %}
+                    Search results
+                {% elif current_category %}
+                    {{ current_category.0.friendly_name }}
+                {% else %}
+                    Products
+                {% endif %}
+            </h1>
             <hr class="mt-0">
         </div>
     </div>
@@ -55,7 +63,21 @@
                             </div>
                         </div>
                     </div>
+                {% empty %}
+                <!-- If no products listed -->
+                <div class="text-center">
+                    <p class="">
+                    {% if search_term %}
+                        No results found for "{{ search_term }}". Try using a different word or phrase.
+                    {% elif current_category %}
+                        No matching {{ current_category.0.friendly_name.lower }} found...
+                    {% else %}
+                        No products found...
+                    {% endif %}
+                    </p>
+                </div>
                 {% endfor %}
+                
             </div>
         </div>
     </div>
