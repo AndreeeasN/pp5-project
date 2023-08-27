@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect, reverse
 from django.contrib import messages
 from django.db.models import Q
-from .models import Product
+from .models import Product, Category, ProductTag
 
 
 def all_products(request):
@@ -10,9 +10,21 @@ def all_products(request):
     """
     products = Product.objects.all()
     query = None
+    category = None
+    tags = None
 
-    # If a search is being made
+    # Filters based on category, tag and search query
     if request.GET:
+        if 'category' in request.GET:
+            category = request.GET['category']
+            products = products.filter(category__name=category)
+            category = Category.objects.filter(name=category)
+
+        if 'tags' in request.GET:
+            tags = request.GET['tags'].split(',')
+            products = products.filter(product_tags__name__in=tags).distinct
+            tags = ProductTag.objects.filter(name__in=tags)
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -22,16 +34,18 @@ def all_products(request):
                     )
                 return redirect(reverse('products'))
 
-        # Searches name, description and tags
-        queries = (
-            Q(name__icontains=query) |
-            Q(description__icontains=query) |
-            Q(product_tags__name__icontains=query)
-            )
-        products = products.filter(queries).distinct
+            # Searches name, description and tags
+            queries = (
+                Q(name__icontains=query) |
+                Q(description__icontains=query) |
+                Q(product_tags__name__icontains=query)
+                )
+            products = products.filter(queries).distinct
 
     context = {
         'products': products,
+        'current_category': category,
+        'current_tags': tags,
         'search_term': query,
     }
     return render(request, 'products/products.html', context)
