@@ -18,13 +18,13 @@
             <div class="row">
                 <!-- Products -->
                 {% for product in products%}
-                    <div class="col-6 col-md-4 col-xl-3 p-1">
+                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 col-xxl-2 p-1">
                         <div class="card h-100 p-1">
                             <!-- Product image -->
                             <div class="square-img-container">
                                 {% if product.image %}
                                 <a href="">
-                                    <img class="product-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    <img class="product-img p-2" src="{{ product.image.url }}" alt="{{ product.name }}">
                                 </a>
                                 {% else %}
                                 <!-- Default if no image -->
@@ -33,26 +33,24 @@
                                 </a>
                                 {% endif %}
                             </div>
-                                <!-- Product name, price, add to cart/choose options -->
-                                <div class="card-body">
+                            <!-- Product name, price, add to cart/choose options -->
+                            <div class="card-body d-flex flex-column">
                                 <p class="fs-5">
                                     <a class="link-dark link-underline-opacity-0" href="">
                                         {{ product.name }}
                                     </a>
                                 </p>
-                                <!-- If product has variants show minimum price-->
+                            <!-- If product has variants show minimum price-->
                                 {% if product.product_variants.all  %}
-                                    <p>
+                                    <p class="mt-auto">
                                         From {{ product.get_minimum_price }} EUR
                                     </p>
-                                    <button class="w-100 btn btn-blue mb-2 py-2">Choose Options</button>
-
+                                    <button class="w-100 btn btn-blue mb-2 py-2 mt-auto">Choose Options</button>
                                 {% else %}
-                                    <p>
+                                    <p class="mt-auto">
                                         {{ product.price }} EUR
                                     </p>
-                                    
-                                    <button class="w-100 btn btn-blue">
+                                    <button class="w-100 btn btn-blue mb-2 py-2 mt-auto">
                                         Add to Cart
                                     </button>
                                 {% endif %}
