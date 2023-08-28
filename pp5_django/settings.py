@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [
-    'https://swetooth-candy-co-c66a5c7b1ddf.herokuapp.com/',
+    'swetooth-candy-co-c66a5c7b1ddf.herokuapp.com',
     '127.0.0.1'
     ]
 
@@ -45,12 +45,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'storages',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'home',
     'products',
+
+    # other
+    'storages',
 ]
 
 MIDDLEWARE = [
