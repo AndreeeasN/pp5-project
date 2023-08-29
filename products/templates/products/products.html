@@ -22,9 +22,21 @@
     </div>
     <div class="row">
         <div class="col-10 offset-1">
-            <div class="row my-2"></div>
+            <div class="row justify-content-between">
+                <!-- Sort order -->
+                <div class="d-flex col-12 col-md-6 col-lg-4 ms-auto p-0 mb-2 align-items-center">
+                    <select id="sort-selector" class="form-select form-select-sm flex-grow-1">
+                        <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by:</option>
+                        <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price, low to high</option>
+                        <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price, high to low</option>
+                        <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Alphabetically, A-Z</option>
+                        <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Alphabetically, Z-A</option>
+                    </select>
+                    <span id="products-amount" class="col-auto text-muted px-2">{{ products|length }} Products</span>
+                </div>
+            </div>
+            <!-- Products -->
             <div class="row">
-                <!-- Products -->
                 {% for product in products%}
                     <div class="col-12 col-sm-6 col-md-4 col-xl-3 col-xxl-2 p-1">
                         <div class="card h-100 p-1">
@@ -66,7 +78,7 @@
                 {% empty %}
                 <!-- If no products listed -->
                 <div class="text-center">
-                    <p class="">
+                    <p class="my-4 lead">
                     {% if search_term %}
                         No results found for "{{ search_term }}". Try using a different word or phrase.
                     {% elif current_category %}
@@ -82,4 +94,29 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script type="text/javascript">
+    // Script to sort products on selecting from #sort-selector
+    $('#sort-selector').change(function() {
+        var selector = $(this);
+        var currentUrl = new URL(window.location);
+
+        var selectedVal = selector.val();
+        if(selectedVal != "reset"){
+            var sort = selectedVal.split("_")[0];
+            var direction = selectedVal.split("_")[1];
+
+            currentUrl.searchParams.set("sort", sort);
+            currentUrl.searchParams.set("direction", direction);
+        } else {
+            currentUrl.searchParams.delete("sort");
+            currentUrl.searchParams.delete("direction");
+        }
+
+        window.location.replace(currentUrl);
+    })
+</script>
 {% endblock %}
