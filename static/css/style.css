@@ -39,6 +39,30 @@ footer{
     border: 1px solid #0169A8;
 }
 
+/* Back-to-top button, initially hidden */
+#btt-button{
+    color: white;
+    border-radius: 100%;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    z-index: -1;
+}
+
+/* Back-to-top button, on being shown */
+#btt-button.show{
+    opacity: 1;
+    display: block;
+    /*
+    Above basic html elements but under bootstrap
+    overlays, for further information see
+    https://getbootstrap.com/docs/5.3/layout/z-index/ 
+    */
+    z-index: 1060;
+}
+
 /* Carousel */
 .carousel-control-prev-icon, .carousel-control-next-icon{
     background-color: rgba(0, 0, 0, 0.5);
