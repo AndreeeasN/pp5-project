@@ -31,7 +31,7 @@ def add_to_cart(request, item_id):
             # If variant belongs to this product
             if variant in item.product_variants.all():
                 cart_item_key = f'{item_id}_{variant_id}'
-                printMsg += f' ({variant.friendly_name})'
+                printMsg += f' - {variant.friendly_name}'
             else:
                 messages.warning(
                     request,

@@ -7,7 +7,7 @@
 {% block content%}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-10 offset-1 col-xl-8 offset-xl-2 col-xxl-6 offset-xxl-3">
+        <div class="col-12 col-sm-10 offset-sm-1 col-xl-8 offset-xl-2 col-xxl-6 offset-xxl-3">
             <!-- Header and 'continue shopping' link -->
             <div class="row">
                 <div class="d-flex col-6 align-items-center">
@@ -19,9 +19,62 @@
                 <hr>
             </div>
 
+            <!-- Table of cart contents -->
             <div class="row">
                 {% if cart_items %}
-                    <div class="table-responsive rounded"></div>
+                    <div class="table-responsive rounded">
+                        <table class="table table-sm table-borderless">
+                            <thead>
+                                <tr>
+                                    <th scrope="col">Product Info</th>
+                                    <th scrope="col" class="d-none d-sm-table-cell"></th>
+                                    <th scrope="col" class="text-center">Price</th>
+                                    <th scrope="col" class="text-center">Qty</th>
+                                    <th scrope="col" class="text-center">Subtotal</th>
+                                </tr>
+                            </thead>
+
+                            {% for item in cart_items %}
+                                <tr>
+                                    <td class="p-3 w-auto d-none d-sm-table-cell">
+                                        <div class="square-img-container">
+                                            <img class="product-img" 
+                                            src="{% if item.product.image %}{{ item.product.image.url }}{% else %}{% static 'images/noimage.png' %}{% endif %}"
+                                            alt="{{ item.product.name }}">
+                                        </div>
+                                    </td>
+                                    <td class="py-3">
+                                        <p class="my-0 fw-bold">
+                                            {{ item.product.name }}
+                                        </p>
+                                        {% if item.variant %}
+                                        <p class="my-0 fst-italic">
+                                            {{item.variant.get_friendly_name}}
+                                        </p>
+                                        {% endif %}
+                                        <p class="my-0 small text-muted">
+                                            SKU: {% if item.product.sku %}{{ item.product.sku }}{% else %}-{% endif %}
+                                        </p>
+                                    </td>
+                                    <td class="py-3 text-center">
+                                        <p class="my-0">
+                                            €{{ item.price }}
+                                        </p>
+                                    </td>
+                                    <td class="py-3 text-center">
+                                        <p class="my-0">
+                                            {{ item.quantity }}
+                                        </p>
+                                    </td>
+                                    <td class="py-3 text-center">
+                                        <p class="my-0">
+                                            €{{ item.subtotal }}
+                                        </p>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
                 {% else %}
                     <!-- If no products in cart -->
                     <div class="text-center">

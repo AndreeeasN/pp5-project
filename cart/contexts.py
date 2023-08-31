@@ -1,13 +1,46 @@
 from decimal import Decimal
+from django.shortcuts import get_object_or_404
 from django.conf import settings
+from products.models import Product, ProductVariant
 
 
 def cart_contents(request):
-
+    """
+    Context proccessor containing contents of shopping cart
+    """
     cart_items = []
     total = 0
     product_count = 0
     delivery_threshold = settings.FREE_DELIVERY_THRESHOLD
+    cart = request.session.get('cart', {})
+
+    for _item_key, item in cart.items():
+        item_id = item['item_id']
+        variant_id = item['variant_id']
+        quantity = item['quantity']
+
+        product = get_object_or_404(Product, pk=item_id)
+        variant = None
+        price = product.price
+        subtotal = product.price * quantity
+
+        # If item has a size/variant add variant price
+        if variant_id is not None:
+            variant = get_object_or_404(ProductVariant, pk=variant_id)
+            total += variant.variant_price * quantity
+            price = variant.variant_price
+            subtotal = price * quantity
+        else:
+            total += product.price
+
+        product_count += quantity
+        cart_items.append({
+            'product': product,
+            'variant': variant,
+            'quantity': quantity,
+            'price': price,
+            'subtotal': subtotal,
+        })
 
     if total < delivery_threshold:
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)

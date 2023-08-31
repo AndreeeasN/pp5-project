@@ -84,12 +84,6 @@ class ProductVariant(models.Model):
         """
         return self.friendly_name if self.friendly_name else self.name
 
-    def get_variant_price(self):
-        """
-        Returns price of variant size
-        """
-        return self.variant_price
-
 
 class Product(models.Model):
     """

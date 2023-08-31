@@ -43,7 +43,7 @@
                                     <select name="variant" id="variant-select" class="form-select">
                                         {% for variant in product.product_variants.all %}
                                         <option value="{{ variant.pk }}" data-price="{{ variant.variant_price }}">
-                                            {{ variant.friendly_name }}
+                                            {{ variant.get_friendly_name }}
                                         </option>
                                         {% endfor %}
                                     </select>
