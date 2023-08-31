@@ -21,17 +21,18 @@ def cart_contents(request):
 
         product = get_object_or_404(Product, pk=item_id)
         variant = None
-        price = product.price
-        subtotal = product.price * quantity
 
         # If item has a size/variant add variant price
         if variant_id is not None:
             variant = get_object_or_404(ProductVariant, pk=variant_id)
+
             total += variant.variant_price * quantity
             price = variant.variant_price
             subtotal = price * quantity
         else:
             total += product.price
+            price = product.price
+            subtotal = product.price * quantity
 
         product_count += quantity
         cart_items.append({

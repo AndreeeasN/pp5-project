@@ -35,9 +35,15 @@ def add_to_cart(request, item_id):
             else:
                 messages.warning(
                     request,
-                    "Product does not come in specified size/variant."
+                    "Product does not come in the specified size/variant."
                     )
-                return redirect(f'product_detail/{item_id}')
+                return redirect(redirect_url)
+        else:
+            messages.warning(
+                    request,
+                    "Please select a valid size/variant."
+                    )
+            return redirect(redirect_url)
     else:
         cart_item_key = item_id
 
