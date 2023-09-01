@@ -14,7 +14,7 @@ def cart_contents(request):
     delivery_threshold = settings.FREE_DELIVERY_THRESHOLD
     cart = request.session.get('cart', {})
 
-    for _item_key, item in cart.items():
+    for item_key, item in cart.items():
         item_id = item['item_id']
         variant_id = item['variant_id']
         quantity = item['quantity']
@@ -36,6 +36,7 @@ def cart_contents(request):
 
         product_count += quantity
         cart_items.append({
+            "item_key": item_key,
             'product': product,
             'variant': variant,
             'quantity': quantity,

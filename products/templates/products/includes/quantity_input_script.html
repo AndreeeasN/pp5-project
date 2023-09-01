@@ -1,35 +1,47 @@
 <script type="text/javascript">
-    // Function that handles disabling plus/minus buttons
-    function handleEnableDisable(itemId) {
-        var currentValue = parseInt($(`#id-qty-${itemId}`).val());
-        var minusDisabled = currentValue < 2;
-        var plusDisabled = currentValue > 98;
-        $(`#decrement-qty-${itemId}`).prop('disabled', minusDisabled);
-        $(`#increment-qty-${itemId}`).prop('disabled', plusDisabled);
+    // Function that clamps user-submitted values between min and max
+    function clampFieldValue(itemId) {
+        var field = $(`#id-qty-${itemId}`)
+        var min = parseInt(field.attr('min'))
+        var max = parseInt(field.attr('max'))
+
+        // If empty or NaN defaults to min
+        var currentValue = parseInt(field.val()) || min;
+        if (currentValue <= min){field.val(min)}
+        if (currentValue >= max){field.val(max)}
     }
 
-    var allQtyInputs = $('qty-input');
-    for(var i = 0; i < allQtyInputs.length; i++){
-        var itemId = $(allQtyInputs[i]).data('item-id');
-        handleEnableDisable(itemId);
+    // Function that returns value between field min and max
+    // If above max, returns max. If below min, return min
+    function validateFieldValue(itemId, value){
+        var field = $(`#id-qty-${itemId}`)
+        var min = parseInt(field.attr('min'))
+        var max = parseInt(field.attr('max'))
+
+        return value > max ? max : value < min ? min : value;
     }
+
+    // Checks value on change
+    $('.qty-input').change(function() {
+        var itemId = $(this).data('item-id');
+        clampFieldValue(itemId);
+    });
 
     // Increment quantity by 1
     $('.increment-qty').click(function(e){
         e.preventDefault();
         var closestInput = $(this).closest('.input-group').find('.qty-input')[0];
         var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue + 1);
         var itemId = $(this).data('item-id');
-        handleEnableDisable(itemId);
+        $(closestInput).val(validateFieldValue(itemId, currentValue + 1));
     })
+    
     // Decrement quantity by 1
     $('.decrement-qty').click(function(e){
         e.preventDefault();
         var closestInput = $(this).closest('.input-group').find('.qty-input')[0];
         var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue - 1);
         var itemId = $(this).data('item-id');
-        handleEnableDisable(itemId);
+        $(closestInput).val(validateFieldValue(itemId, currentValue - 1));
     })
 </script>
