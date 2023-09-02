@@ -65,7 +65,10 @@ def add_to_cart(request, item_id):
     request.session['cart'] = cart
     messages.success(request, printMsg)
 
-    return redirect(redirect_url)
+    if request.is_ajax():
+        return JsonResponse({'message': printMsg})
+    else:
+        return redirect(redirect_url)
 
 
 def adjust_cart(request, item_id):

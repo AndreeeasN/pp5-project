@@ -63,14 +63,16 @@
                                     <p class="mt-auto">
                                         From {{ product.get_minimum_price }} EUR
                                     </p>
-                                    <button class="w-100 btn btn-blue mb-2 py-2 mt-auto">Choose Options</button>
+                                    <a href="{% url 'product_detail' product.id %}">
+                                        <button class="w-100 btn btn-blue mb-2 py-2 mt-auto">Choose Options</button>
+                                    </a>
                                 {% else %}
                                     <p class="mt-auto">
                                         {{ product.price }} EUR
                                     </p>
-                                    <button class="w-100 btn btn-blue mb-2 py-2 mt-auto">
+                                    <button id="add-{{ product.pk }}" class="add-to-cart w-100 btn btn-blue mb-2 py-2 mt-auto">
                                         Add to Cart
-                                    </button>
+                                    </button>   
                                 {% endif %}
                             </div>
                         </div>
@@ -137,6 +139,27 @@
         }
 
         window.location.replace(currentUrl);
+    })
+</script>
+
+<script type="text/javascript">
+    $('.add-to-cart').click(function(e) {
+        var csrf_token = '{{ csrf_token }}';
+        var item_id = $(this).attr('id').split('add-')[1];
+        var redirect_url = window.location.toString();
+        var url = `../cart/add/${item_id}/`;
+        var data = {
+            'csrfmiddlewaretoken': csrf_token,
+            'item_id': item_id,
+            'variant_id': null,
+            'quantity': 1,
+            'redirect_url': redirect_url,
+        }
+
+        $.post(url, data)
+        .done(function(){
+            location.reload();
+        });
     })
 </script>
 {% endblock %}
