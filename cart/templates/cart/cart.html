@@ -22,7 +22,7 @@
             <!-- Table of cart contents -->
             <div class="row">
                 {% if cart_items %}
-                    <div class="table-responsive rounded">
+                    <div class="table-responsive rounded px-0 px-sm-1">
                         <table class="table table-sm table-borderless">
                             <thead>
                                 <tr>
@@ -56,18 +56,18 @@
                                             SKU: {% if item.product.sku %}{{ item.product.sku }}{% else %}-{% endif %}
                                         </p>
                                     </td>
-                                    <td class="py-3 text-center">
+                                    <td class="py-3 px-0 text-center">
                                         <p class="my-0">
                                             €{{ item.price }}
                                         </p>
                                     </td>
-                                    <td class="py-3 text-center">
+                                    <td class="py-3 px-0 text-center">
                                         <p class="my-0">
                                             <!-- {{ item.quantity }} -->
-                                            <form class="form update-form" method="POST" action="">
+                                            <form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_key %}">
                                                 {% csrf_token %}
                                                 <div class="form-group">
-                                                    <div class="input-group">
+                                                    <div class="input-group qty-div justify-content-center">
                                                         <div class="input-group-prepend">
                                                             <button class="decrement-qty btn btn-sm"
                                                             data-item-id="{{ item.item_key }}" id="decrement-qty-{{ item.item_key }}">
@@ -77,7 +77,7 @@
                                                             </button>
                                                         </div>
             
-                                                        <input class="form-control qty-input" type="number"
+                                                        <input class="form-control qty-input rounded-2" type="number"
                                                         name="quantity" value="{{ item.quantity }}" min="1" max="99"
                                                         data-item-id="{{ item.item_key }}" id="id-qty-{{ item.item_key }}">
                                                         
@@ -92,11 +92,11 @@
                                                     </div>
                                                 </div>
                                             </form>
-                                            <a class="update-link text-info show-pointer" href=""><small>Update</small></a>
+                                            <a class="update-link text-info show-pointer"><small>Update</small></a>
                                             <a class="remove-item text-danger show-pointer" id="remove-{{ item.item_id}}"><small>Remove</small></a>
                                         </p>
                                     </td>
-                                    <td class="py-3 text-center">
+                                    <td class="py-3 px-0 text-center">
                                         <p class="my-0">
                                             €{{ item.subtotal }}
                                         </p>

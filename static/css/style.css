@@ -67,6 +67,17 @@ footer{
     cursor: pointer;
 }
 
+/* cart quantity selection */
+.qty-div{
+    flex-wrap: nowrap;
+    align-self: center;
+}
+
+.qty-input{
+    text-align: center;
+    max-width: 50px;
+}
+
 /* Carousel */
 .carousel-control-prev-icon, .carousel-control-next-icon{
     background-color: rgba(0, 0, 0, 0.5);
@@ -140,3 +151,18 @@ input[type=number] {
         background-color: white;
     }
 }
+
+/* small screen size */
+@media (max-width: 576px) {
+    /* quantity selector */
+    .qty-input{
+        padding: 0px;
+        text-align: center;
+    }
+    
+    /* quantity selection buttons */
+    .increment-qty, .decrement-qty{
+        padding: 4px 3px
+    }
+}
+
