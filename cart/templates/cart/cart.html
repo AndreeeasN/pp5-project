@@ -56,12 +56,12 @@
                                             SKU: {% if item.product.sku %}{{ item.product.sku }}{% else %}-{% endif %}
                                         </p>
                                     </td>
-                                    <td class="py-3 px-0 text-center">
+                                    <td class="py-3 px-1 text-center">
                                         <p class="my-0">
                                             €{{ item.price }}
                                         </p>
                                     </td>
-                                    <td class="py-3 px-0 text-center">
+                                    <td class="py-3 px-1 text-center">
                                         <p class="my-0">
                                             <!-- {{ item.quantity }} -->
                                             <form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_key %}">
@@ -93,10 +93,10 @@
                                                 </div>
                                             </form>
                                             <a class="update-link text-info show-pointer"><small>Update</small></a>
-                                            <a class="remove-item text-danger show-pointer" id="remove-{{ item.item_id}}"><small>Remove</small></a>
+                                            <a class="remove-link text-danger show-pointer" id="remove-{{ item.item_key }}"><small>Remove</small></a>
                                         </p>
                                     </td>
-                                    <td class="py-3 px-0 text-center">
+                                    <td class="py-3 px-1 text-center">
                                         <p class="my-0">
                                             €{{ item.subtotal }}
                                         </p>
@@ -104,6 +104,21 @@
                                 </tr>
                             {% endfor %}
                         </table>
+                        <div class="container-fluid col-12 col-md-6 offset-md-6">
+                            <div class="pt-4 text-end">
+                                <h6><strong>Bag Total: ${{ total|floatformat:2 }}</strong></h6>
+                                <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
+                                <h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
+                                {% if free_delivery_delta > 0 %}
+                                    <p class="mb-1 text-danger">
+                                        Get free delivery by adding another <strong>€{{ free_delivery_delta }}</strong>!
+                                    </p>
+                                {% endif %}
+                                <a href="" class="btn btn-blue btn-lg py-4 w-100">
+                                    <span>Check out</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 {% else %}
                     <!-- If no products in cart -->
@@ -134,7 +149,7 @@
     $('.remove-link').click(function(e) {
         var csrf_token = '{{ csrf_token }}';
         var itemId = $(this).attr('id').split('remove-')[1];
-        var url = `cart/remove/${itemId}`;
+        var url = `remove/${itemId}/`;
         var data = {'csrfmiddlewaretoken': csrf_token,}
 
         $.post(url, data)

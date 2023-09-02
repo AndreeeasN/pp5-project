@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib import messages
 from products.models import Product, ProductVariant
 
@@ -65,3 +66,48 @@ def add_to_cart(request, item_id):
     messages.success(request, printMsg)
 
     return redirect(redirect_url)
+
+
+def adjust_cart(request, item_id):
+    """
+    View that adjusts the specified item in the cart
+    """
+    quantity = int(request.POST.get('quantity'))
+    cart = request.session.get('cart', {})
+
+    if item_id in cart:
+        if quantity > 0:
+            cart[item_id]['quantity'] = quantity
+        else:
+            cart.pop(item_id)
+    else:
+        messages.error(
+            request,
+            "The specified product does not exist in your cart."
+            )
+
+    # Updates cart
+    request.session['cart'] = cart
+    return redirect(reverse('view_cart'))
+
+
+def remove_from_cart(request, item_id):
+    """
+    View that adjusts the specified item in the cart
+    """
+    try:
+        cart = request.session.get('cart', {})
+
+        if item_id in cart:
+            cart.pop(item_id)
+        else:
+            messages.error(
+                request,
+                "The specified product does not exist in your cart."
+                )
+
+        # Updates cart
+        request.session['cart'] = cart
+        return HttpResponse(status=200)
+    except Exception:
+        return HttpResponse(status=500)
