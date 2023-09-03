@@ -63,7 +63,7 @@ def add_to_cart(request, item_id):
 
     # Updates cart and display success message
     request.session['cart'] = cart
-    messages.success(request, printMsg)
+    messages.info(request, printMsg)
 
     if request.is_ajax():
         return JsonResponse({'message': printMsg})
