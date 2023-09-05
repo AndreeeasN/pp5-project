@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content%}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <!-- Header and 'continue shopping' link -->
+            <div class="row">
+                <div class="col-12 align-items-center text-center">
+                    <h1 class="py-4 m-0">Order Successful!</h1>
+                    <p>
+                        Your order information is below, a confirmation email 
+                        has been sent to <strong>{{ order.email }}</strong>
+                    </p>
+                </div>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="col-12 align-items-center text-center">
+                    {{order.order_number}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
