@@ -72,7 +72,7 @@
                         </a>
                         <!-- Dropdown menu items -->
                         <ul class="dropdown-menu dropdown-menu-start">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
                             {% if user.is_superuser %}
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="/admin">Admin Menu</a></li>
