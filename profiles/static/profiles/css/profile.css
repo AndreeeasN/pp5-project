@@ -1,0 +1,23 @@
+/* Order history */
+.order-history {
+    max-height: 416px;
+    overflow: auto;
+}
+
+/* Country dropdown menu */
+#profile-update-form .form-control {
+    color: #000;
+}
+
+#profile-update-form input::placeholder {
+    color: #7d868f;
+}
+
+#id_default_country,
+#id_default_country option:not(:first-child) {
+    color: #000;
+}
+
+#id_default_country option:first-child {
+    color: #7d868f;
+}

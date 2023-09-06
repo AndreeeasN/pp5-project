@@ -183,9 +183,15 @@
                     
                     <div class="row">
                         <div class="col">
+                            {% if from_profile %}
+                            <a class="btn btn-blue btn-lg my-3 py-3 px-4" href="{% url 'profile' %}">
+                                <span class="font-weight-bold">&laquo; Return to Profile</span>
+                            </a>
+                            {% else %}
                             <a class="btn btn-blue btn-lg my-3 py-3 px-4" href="{% url 'home' %}">
                                 <span class="font-weight-bold">&laquo; Return to Home Page</span>
                             </a>
+                            {% endif %}
                         </div>
                     </div>
 
