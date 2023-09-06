@@ -1,4 +1,6 @@
 /* Base css taken from CI "Boutiqe Ado" Walkthrough project */
+
+/* Stripe related elements */
 .StripeElement,
 .stripe-style-input {
   box-sizing: border-box;
@@ -36,6 +38,25 @@
     border-radius: 4px;
 }
 
+/* Country dropdown menu */
+select,
+select option {
+    color: #000000;
+}
+
+select:invalid,
+select option[value=""] {
+    color: #7d868f !important;
+}
+
+#id_country{
+  padding-bottom: 0px;
+  padding-top: 0px;
+  border-color:#c7c8c9;
+  border-radius: 4px;
+}
+
+/* Checkout loading overlay */
 #loading-overlay{
   display: none;
   position: fixed;
