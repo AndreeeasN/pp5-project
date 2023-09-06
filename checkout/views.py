@@ -1,6 +1,8 @@
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect, reverse
 from django.contrib import messages
 from django.conf import settings
+from django.views.decorators.http import require_POST
 
 from .models import OrderLineItem, Order
 from .forms import OrderForm
@@ -8,6 +10,31 @@ from cart.contexts import cart_contents
 from products.models import Product, ProductVariant
 
 import stripe
+import json
+
+
+@require_POST
+def cache_checkout_data(request):
+    """
+    Update payment intent to include user, if 'Save data' has been ticked
+    and cart contents in the metadata.
+    """
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata={
+            'username': request.user,
+            'save_info': request.POST.get('save_info'),
+            'cart': json.dumps(request.session.get('cart', {})),
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(
+            request,
+            "Your payment cannot be processed right now. \
+            Please try again later."
+        )
+        return HttpResponse(content=e, status=400)
 
 
 def checkout(request):
