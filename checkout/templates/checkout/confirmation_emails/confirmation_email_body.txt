@@ -1,0 +1,18 @@
+Hello {{ order.full_name }}!
+
+Thank you for shopping at the SWEtooth Candy Co. Store!
+Your order information is below:
+
+Order Number: {{ order.order_number }}
+Order Date: {{ order.date }}
+
+Order Total: €{{ order.order_total }}
+Delivery: €{{ order.delivery_cost }}
+Grand Total: €{{ order.grand_total }}
+
+Your order will be shipped to {{ order.street_address1 }} in {{ order.town_or_city }}, {{ order.country }}.
+
+If you have any questions, we can be reached at {{ contact_email }}.
+Sweetest Regards,
+
+SWEtooth Candy Co.
