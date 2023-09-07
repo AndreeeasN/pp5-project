@@ -74,6 +74,13 @@
                                         Add to Cart
                                     </button>   
                                 {% endif %}
+                                {% if request.user.is_superuser %}
+                                    <hr>
+                                    <p class="my-0 text-center">
+                                        <a href="{% url 'edit_product' product.id %}">Edit</a> | 
+                                        <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                                    </p>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
