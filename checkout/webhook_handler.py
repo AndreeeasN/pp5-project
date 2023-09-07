@@ -2,6 +2,7 @@ from django.http import HttpResponse
 
 from .models import Order, OrderLineItem
 from products.models import Product, ProductVariant
+from profiles.models import UserProfile
 
 import stripe
 import json
@@ -47,6 +48,26 @@ class StripeWH_Handler:
             if value == "":
                 shipping_details.address[field] = None
 
+        # Update user profile information if save_info was checked
+        profile = None
+        username = intent.metadata.username
+        if username != 'AnonymousUser':
+            profile = UserProfile.objects.get(user__username=username)
+
+            if save_info:
+                profile.default_phone_number = shipping_details.phone
+                profile.default_country = shipping_details.address.country
+                profile.default_postcode = shipping_details.address.postal_code
+                profile.default_town_or_city = shipping_details.address.city
+                profile.default_street_address1 = (
+                    shipping_details.address.line1
+                    )
+                profile.default_street_address2 = (
+                    shipping_details.address.line2
+                    )
+                profile.default_county = shipping_details.address.state
+                profile.save()
+
         order_exists = False
 
         # Verifies if order already exists in database
@@ -73,6 +94,7 @@ class StripeWH_Handler:
             except Order.DoesNotExist:
                 attempt += 1
                 time.sleep(1)
+
         if order_exists:
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | \
@@ -85,6 +107,7 @@ class StripeWH_Handler:
                 for item_key, item_data in json.loads(cart).items():
                     order = Order.objects.create(
                         full_name=shipping_details.name,
+                        user_profile=profile,
                         email=billing_details.email,
                         phone_number=shipping_details.phone,
                         country=shipping_details.address.country,
