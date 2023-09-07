@@ -75,7 +75,8 @@
                             <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
                             {% if user.is_superuser %}
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="/admin">Admin Menu</a></li>
+                                <li><a class="dropdown-item" href="{% url 'add_product' %}">Add New Product</a></li>
+                                <li><a class="dropdown-item" href="/admin">Django Admin Menu</a></li>
                             {% endif %}
                             <li><hr class="dropdown-divider"></li>
                             <li><a id="button-logout" class="dropdown-item text-danger" href="{% url 'account_logout' %}">Sign Out</a></li>
