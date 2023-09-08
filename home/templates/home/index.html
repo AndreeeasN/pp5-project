@@ -50,3 +50,9 @@
 {% block content%}
 <h1 class="lead text-success text-center">CONTENT</h1>
 {% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'includes/btt_button.html' %}
+
+{% endblock %}

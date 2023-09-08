@@ -160,6 +160,7 @@ input[type=number] {
         padding-top: 136px;
     }
 
+    /* navbars */
     #mobile-nav{
         color: black;
         background-color: white;
@@ -171,10 +172,10 @@ input[type=number] {
     }
 }
 
-/* medium screen size and above */
-@media (max-width: 768px) {
-    /* padding for fixed header */
-    #mobile-nav a:hover{
+/* medium screen size */
+@media (max-width: 767px) {
+    /* links on mobile nav */
+    #mobile-nav > a:hover{
         color: #fecc00!important;
         text-shadow: 0 2px 10px black;
     }

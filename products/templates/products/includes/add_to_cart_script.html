@@ -1,0 +1,21 @@
+<script type="text/javascript">
+    // Script to add product to cart on click
+    $('.add-to-cart').click(function(e) {
+        var csrf_token = '{{ csrf_token }}';
+        var item_id = $(this).attr('id').split('add-')[1];
+        var redirect_url = window.location.toString();
+        var url = `../cart/add/${item_id}/`;
+        var data = {
+            'csrfmiddlewaretoken': csrf_token,
+            'item_id': item_id,
+            'variant_id': null,
+            'quantity': 1,
+            'redirect_url': redirect_url,
+        }
+
+        $.post(url, data)
+        .done(function(){
+            location.reload();
+        });
+    })
+</script>

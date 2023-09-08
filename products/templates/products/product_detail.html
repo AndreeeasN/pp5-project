@@ -108,14 +108,6 @@
 {% block postloadjs %}
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
+{% include 'products/includes/update_variant_price_script.html' %}
 
-<script type="text/javascript">
-    // Script to update the price label on changing size/variant
-    $('#variant-select').change(function() {
-        var priceLabel = document.querySelector('#product-price');
-        var selectedOption = $(this).find('option:selected');
-
-        priceLabel.innerHTML = selectedOption.data("price");
-    })
-</script>
 {% endblock %}

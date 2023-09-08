@@ -1,0 +1,21 @@
+<!-- Button that scrolls back to top of the page -->
+<button id="btt-button" class="btn btn-secondary" title="Scroll to Top">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<script type="text/javascript">
+    // Script to scroll to top on btt button press
+    const backToTopButton = document.querySelector('#btt-button');
+    backToTopButton.addEventListener('click', function(){
+        window.scrollTo(0,0);
+    })
+
+    // Button only visible after scrolling
+    window.addEventListener('scroll', function(){
+        if (window.scrollY > 400) {
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+    })
+</script>
