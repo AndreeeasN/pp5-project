@@ -48,7 +48,82 @@
 {% endblock %}
 
 {% block content%}
-<h1 class="lead text-success text-center">CONTENT</h1>
+<div class="container mt-2">
+    <div class="row">
+        <h1 class="text-center my-4 lead fs-2">SWEtooth Candy Co. Store</h1>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card mb-4">
+                <div class="row d-flex flex-row">
+                    <div class="col-md-4">
+                        <img src="{% static 'images\swedish-candy-shop.jpg' %}" alt="Pick-n-mix" class="home-card-img img-fluid">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body py-4 px-2 p-sm-5">
+                            <h2 class="card-title mb-4">The Swedish Candy Culture</h5>
+                            <p class="card-text">
+                                Picking out sweets or snacks for the weekend is a Swedish tradition known as 
+                                "Fredagsmys" ("Friday Coziness") and "Lördagsgodis" ("Saturday Candy"), 
+                                held close to heart by kids and adults alike.
+                            </p>
+                            <p class="card-text">
+                                Luckily one does not need to be Swedish to partake in these age-long traditions,
+                                have a look through our vast array of sweet, sour and salty treats and enjoy
+                                celebrating the weekend any day of the week!
+                            </p>
+                            <a href="{% url 'products' %}?category=candy" class="btn btn-blue py-3 px-4 mt-auto">Create your Candy Mix</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="row d-flex flex-row-reverse">
+                    <div class="col-md-4">
+                        <img src="{% static 'images\swedish-candy-mixes.jpg' %}" alt="Pick-n-mix" class="home-card-img img-fluid">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body py-4 px-2 p-sm-5">
+                            <h2 class="card-title mb-4">Pre-mixed Candy Bags</h5>
+                            <p class="card-text">
+                                Having trouble choosing your perfect mix? We've got you covered!<br>
+                            </p>
+                            <p class="card-text">
+                                Check out our pre-mixed selections of sweet, sour, chocolate or licorice!
+                            </p>
+                            <a href="{% url 'products' %}?category=mixed-bags" class="btn btn-blue py-3 px-4">Browse Candy Mixes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="row d-flex flex-row">
+                    <div class="col-md-4">
+                        <img src="{% static 'images\swedish-candy-box.jpg' %}" alt="Pick-n-mix" class="home-card-img img-fluid">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body py-4 px-2 p-sm-5">
+                            <h2 class="card-title mb-4">Sweet Gifts</h5>
+                            <p class="card-text">
+                                Planning to purchase candy as a gift?<br>
+                                Want it to be a little extra?
+                            </p>
+                            <p class="card-text">
+                                Add one of our gift wraps, gift boxes, or gift baskets and 
+                                we'll transform your order into a perfect present!
+                            </p>
+                            <a href="{% url 'products' %}?category=gift-solutions" class="btn btn-blue py-3 px-4">View our Gift Solutions</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 {% endblock %}
 
 {% block postloadjs %}
