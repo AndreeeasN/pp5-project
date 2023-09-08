@@ -43,8 +43,13 @@ def all_products(request):
         # Tag Filter
         if 'tags' in request.GET:
             tags = request.GET['tags'].split(',')
-            products = products.filter(product_tags__name__in=tags).distinct
-            tags = ProductTag.objects.filter(name__in=tags)
+            products = products.filter(
+                product_tags__name__in=tags,
+                product_tags__search_visible=True
+                ).distinct
+            tags = ProductTag.objects.filter(
+                name__in=tags,
+                search_visible=True)
 
         # Search Filter
         if 'q' in request.GET:
