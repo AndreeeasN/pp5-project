@@ -5,10 +5,24 @@ html{
 body{
     min-height: 100%;
     padding-top: 144px;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Footer */
 footer{
     margin-top: auto;
+    color: white;
+    background-color: #0169A8;
+}
+
+footer a{
+    color: white;
+}
+
+footer a:hover{
+    color: #fecc00;
+    text-shadow: 0 2px 10px black;
 }
 
 /* Navbar */
@@ -139,7 +153,7 @@ input[type=number] {
 
 /* Media Queries */
 
-/* medium screen size */
+/* medium screen size and above */
 @media (min-width: 768px) {
     /* padding for fixed header */
     body {
@@ -149,6 +163,20 @@ input[type=number] {
     #mobile-nav{
         color: black;
         background-color: white;
+    }
+
+    #desktop-nav a:hover{
+        color: #fecc00;
+        text-shadow: 0 2px 10px black;
+    }
+}
+
+/* medium screen size and above */
+@media (max-width: 768px) {
+    /* padding for fixed header */
+    #mobile-nav a:hover{
+        color: #fecc00!important;
+        text-shadow: 0 2px 10px black;
     }
 }
 
