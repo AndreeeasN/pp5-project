@@ -92,9 +92,18 @@
                         </a>
                         {% endif %}
                         <!-- Cart -->
-                        <a class="nav-link text-reset mx-3" href="{% url 'view_cart' %}">
-                            <p><i class="fa-solid fa-basket-shopping"></i></p>
-                            <p>Cart</p>
+                        <a class="nav-link text-reset mx-3 position-relative" href="{% url 'view_cart' %}">
+                            {% if product_count %}
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    {{ product_count }}
+                                    <span class="visually-hidden">Items in cart</span>
+                                </span>
+                                <p><i class="fa-solid fa-basket-shopping"></i></p>
+                                <p>€{{ total | floatformat:"2" }}</p>
+                            {% else %}
+                                <p><i class="fa-solid fa-basket-shopping"></i></p>
+                                <p>Cart</p>
+                            {% endif %}
                         </a>
                     </div>
                 </div>
