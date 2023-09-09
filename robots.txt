@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /cart/
+Sitemap: http://swetooth-candy-co-c66a5c7b1ddf.herokuapp.com/sitemap.xml
