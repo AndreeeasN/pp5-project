@@ -102,6 +102,10 @@ footer a:hover{
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
 }
+/* Pagination wraps on smaller devices */
+.pagination{
+    flex-wrap: wrap;
+}
 
 /* Card images featured on home page */
 .home-card-img{
