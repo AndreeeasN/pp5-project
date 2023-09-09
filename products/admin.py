@@ -12,7 +12,7 @@ class ProductAdmin(admin.ModelAdmin):
         'brand',
         'image',
     )
-    search_fields = ['sku', 'name', 'brand']
+    search_fields = ['sku', 'name', 'brand__name']
     ordering = ('sku',)
 
 
