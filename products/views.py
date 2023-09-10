@@ -113,7 +113,7 @@ def add_product(request):
             request,
             "Only superusers may add new products."
             )
-        redirect(reverse('home'))
+        return redirect(reverse('home'))
 
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
@@ -150,7 +150,7 @@ def edit_product(request, product_id):
             request,
             "Only superusers may edit products."
             )
-        redirect(reverse('home'))
+        return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
 
@@ -189,7 +189,7 @@ def delete_product(request, product_id):
             request,
             "Only superusers may delete products."
             )
-        redirect(reverse('home'))
+        return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
