@@ -19,6 +19,8 @@ def all_products(request):
     tags = None
     sort = None
     direction = None
+    # Products per page
+    paginate_by = 24
 
     if request.GET:
         # Sorting
@@ -47,7 +49,7 @@ def all_products(request):
             products = products.filter(
                 product_tags__name__in=tags,
                 product_tags__search_visible=True
-                ).distinct
+                ).distinct()
             tags = ProductTag.objects.filter(
                 name__in=tags,
                 search_visible=True)
@@ -68,12 +70,12 @@ def all_products(request):
                 Q(description__icontains=query) |
                 Q(product_tags__name__icontains=query)
                 )
-            products = products.filter(queries).distinct
+            products = products.filter(queries).distinct()
 
     current_sorting = f'{sort}_{direction}'
 
     # Pagination
-    paginator = Paginator(products, 24)
+    paginator = Paginator(products, paginate_by)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
