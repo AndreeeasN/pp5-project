@@ -64,8 +64,8 @@
                                     <p class="mt-auto">
                                         From {{ product.get_minimum_price }} EUR
                                     </p>
-                                    <a href="{% url 'product_detail' product.id %}">
-                                        <button class="w-100 btn btn-blue mb-2 py-2 mt-auto">Choose Options</button>
+                                    <a class="w-100 btn btn-blue mb-2 py-2 mt-auto" href="{% url 'product_detail' product.id %}">
+                                        Choose Options
                                     </a>
                                 {% else %}
                                     <p class="mt-auto">

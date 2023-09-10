@@ -26,11 +26,11 @@
                         <table class="table table-sm table-borderless">
                             <thead>
                                 <tr>
-                                    <th scrope="col">Product Info</th>
-                                    <th scrope="col" class="d-none d-sm-table-cell"></th>
-                                    <th scrope="col" class="text-center">Price</th>
-                                    <th scrope="col" class="text-center">Qty</th>
-                                    <th scrope="col" class="text-center">Subtotal</th>
+                                    <th scope="col">Product Info</th>
+                                    <th scope="col" class="d-none d-sm-table-cell"></th>
+                                    <th scope="col" class="text-center">Price</th>
+                                    <th scope="col" class="text-center">Qty</th>
+                                    <th scope="col" class="text-center">Subtotal</th>
                                 </tr>
                             </thead>
 
@@ -62,7 +62,7 @@
                                         </p>
                                     </td>
                                     <td class="py-3 px-1 text-center">
-                                        <p class="my-0">
+                                        <div class="my-0">
                                             <!-- {{ item.quantity }} -->
                                             <form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_key %}">
                                                 {% csrf_token %}
@@ -94,7 +94,7 @@
                                             </form>
                                             <a class="update-link text-info show-pointer"><small>Update</small></a>
                                             <a class="remove-link text-danger show-pointer" id="remove-{{ item.item_key }}"><small>Remove</small></a>
-                                        </p>
+                                        </div>
                                     </td>
                                     <td class="py-3 px-1 text-center">
                                         <p class="my-0">
