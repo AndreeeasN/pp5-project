@@ -5,7 +5,7 @@ Whether creating your own candy mix or choosing from our pre-mixed selection, yo
 ![Am-I-Responsive mockup](static/images/readme/pp5-responsive.png)
 
 ## Table of Contents
-TABLE OF CONTENTS:
+?TABLE OF CONTENTS:
 
 ## UX
 
@@ -33,10 +33,10 @@ The full project board can be found [here](https://github.com/users/AndreeeasN/p
 - I can sort through the admin menu so I can quickly find what I'm looking for
 
 ### Colour Scheme:
-COLOR SCHEME:
+?COLOR SCHEME:
 
 ### Typography:
-FONTS USED:
+?FONTS USED:
 
 ## Wireframes
 - Home page<br>
@@ -52,7 +52,7 @@ FONTS USED:
 
 
 ## Database Schema
-ERD:
+?ERD:
 
 
 ## Features
@@ -180,9 +180,223 @@ ERD:
 - Sign out<br>
 ![Sign out page]()
 
-
 ### Future Features
 - Tag dropdown in product search
 - Make "Update" quantity in cart automatic
 - "About" page
 - FAQ page
+
+
+## Testing
+
+### Manual Testing
+
+#### 1. Navbar
+- Responsiveness
+    - Resizes well down to a minimum screen width of 320px
+    - On smaller screen sizes the search bar will be moved to sidenav as intended
+- Website logo
+    - Redirects to the front page as intended.
+- Search bar
+    - Redirects to products page as intended.
+    - Includes name, description and tags specified to be visible in searches as intended.
+    - On searching without text entered shows "No search text entered" and redirects to product page as intended.
+- Navigational links
+  - All links change color on hover as expected
+    - Applies to mobile view elements as well
+  - "Browse" and "Browse by Category" both open the sidenav as intended
+  - All other links redirect to their intended urls
+- Log in
+  - Redirects to the login page as intended.
+  - Visible only when not logged in as intended.
+  - Icon is correctly replaced with a solid version when logged in.
+  - Link is correctly replaced with the User dropdown menu when logged in.
+- User Dropdown menu
+    - All links redirect to their intended urls
+    - Displays currently logged in User's username as intended.
+    - Correctly hides 'Add new Product' and 'Django Admin Menu' when not logged in as a superuser
+
+#### 2. Home page
+- Responsiveness
+    - Resizes well down to a minimum screen width of 320px
+    - On smaller screen sizes the hero images/carousel is hidden as it doesn't scale well and images + their text aren't visible enough to warrant the screen real estate.
+    - On smaller screen sizes the featured content cards will stack vertically
+- Hero Image / Carousel
+    - ?REQUIRES TESTING
+- Featured Content
+    - All buttons redirect to their intended Urls
+- Back-to-top button
+    - Appears upon scrolling down as intended
+    - Disappears upon scrolling back up as intended
+    - Z-index puts button on top of other elements when visible as intended
+
+#### 3. Products Page
+- Responsiveness
+    - Resizes well down to a minimum screen width of 320px
+    - On smaller screen sizes the pagination bar will wrap around if many pages are available
+- Header  
+    - Correctly displays header as the currently viewed category
+    - Shows "Search results" on search as intended
+- Products
+    - Clicking on a product image or name redirects to it's details page as intended
+    - "Add to Cart" correctly adds the item to the user cart
+        - Products with size selection correctly changes button to "Choose Options" that redirect to the product details page
+    - When logged in as superuser the options to edit and remove correctly redirect to their respective Urls
+        - If not logged in redirects to login page as intended
+        - If logged in but not a superuser, redirects to home page with warning message as intended
+- "Sort By" dropdown
+    - Correctly displays the amount of products displayed
+    - Sorts both by name/price, both ascending and descending correctly
+- Pagination
+      - Enumerated page selector
+        - Correctly displays and highlights the current page
+        - Correctly redirects to intended page number on click
+      - 'Next' and 'Previous' buttons
+        - Correctly jumps forward or back one page on click
+        - Correctly hides if on the first / last page
+      - 'First' and 'Last' buttons
+        - Correctly jumps to the first / last available page on click
+        - Correctly hides if on the first/last page
+
+#### 4. Product Details Page
+  - Responsiveness
+    - Resizes well down to a minimum screen width of 320px
+    - On smaller screen sizes the product image will stack on top of the product information
+  - Product information
+    - Product image, name, price and description all display correctly
+    - Products with sizes/variants correctly display a dropdown selection menu
+      - Product price label correctly updates on changing variant
+  - Quantity selection
+    - '+' and '-' buttons increase and decrease quantity accordingly
+      - The value is correctly clamped between 1-99
+    - If a manually entered value exceeds 99 it'll be set to 99 as expected
+    - If manually entered value isn't a valid integer the value will correctly be set to 1
+  - Add to cart
+    - Correctly adds the selected quantity and variant to cart and refreshes the page
+    
+#### 5. Cart Page
+  - Responsiveness
+    - Resizes well down to a minimum screen width of 320px
+    - On smaller screen sizes the product images are hidden
+  - Product information
+    - Product image, name, price, SKU and subtotal all display correctly
+    - Products with sizes/variants correctly display underneath the product name
+      - The product price is correctly replaced with the variant price
+    - If no products in cart, correctly displays "Empty" message
+  - Quantity selection
+    - '+' and '-' buttons increase and decrease quantity accordingly
+      - The value is correctly clamped between 1-99
+    - If a manually entered value exceeds 99 it'll be set to 99 as expected
+    - If manually entered value isn't a valid integer the value will correctly be set to 1
+  - "Update"
+    - Correctly updates the quantity of selected product and refreshes page
+  - "Remove"
+    - Correclty removes product from cart and refreshes page
+  - "Continue Shopping" link
+    - Correctly redirects to products page
+  - Grand total
+    - The delivery fee (10%) is correctly added to the total to make the grand total
+    - If total exceeds the set threshold the delivery fee is set to €0 as intended
+  - Checkout
+    - Correctly redirects to checkout page
+
+#### 6. Checkout Page
+  - Responsiveness
+    - Resizes well down to a minimum screen width of 320px
+    - On smaller screen sizes the order summary is stacked on top of the checkout form
+  - Product information
+    - Product image, name, quantity and subtotal all display correctly
+    - Products with sizes/variants correctly display underneath the product name
+    - If no products in cart, redirects to main page with a warning message as intended
+  - Grand total
+    - The delivery fee (10%) is correctly added to the total to make the grand total
+    - If total exceeds the set threshold the delivery fee is set to €0 as intended
+  - Checkout form
+    - Auto-fills fields with user delivery information as intended
+    - Only fields marked with * are required as intended
+    - Country dropdown default field is marked as gray as intended
+    - "Save this delivery information" checkbox correctly saves delivery information to user profile on checkout
+  - Complete Order
+    - On successful payment correctly redirects to order confirmation
+      - The order confirmation is also sent to the entered email
+        - ?REQUIRES TESTING
+      - "Return to Home Page" redirects to home page as intended
+
+#### 7. 'Add / Edit Product' pages
+  - Authorization
+    - Correctly redirects user to login page if not logged in when entering page
+    - Correctly redirects user to login page if attempting to submit after logging out in a separate tab
+    - Redirects user to home page if logged in user is not superuser or owner of the post
+  - Product form
+    - Correctly auto-fills fields with pre-existing information 
+  - 'Submit Thought' button
+    - Correctly submits thought form and updates/creates product
+    - Redirects to affected product as intended
+  
+#### 8. Sign up Page
+  - Responsiveness
+    - Resizes well down to a minimum screen width of 320px
+  - Authorization
+    - Redirects user to main page if already logged in
+  - Sign up form
+    - Correctly allows signing up both with or without entering an E-mail
+    - Correctly disallows signing up under the following conditions:
+      - Missing Username or Password
+      - Password too short
+      - Password too common
+      - Password contains username
+      - Repeated password doesn't match first password
+  - 'Sign In' link
+    - Correctly redirects to sign in page
+
+#### 9. Sign in Page
+  - Responsiveness
+    - Resizes well down to a minimum screen width of 320px
+  - Authorization
+    - Redirects user to main page if already logged in
+  - Sign in form
+    - Correctly allows signing in using the corrects username and password
+    - Correctly disallows submitting without a username or password
+  - 'Sign Up' link
+    - Correctly redirects to sign up page
+
+#### 10. Sign out Page
+  - Responsiveness
+    - Resizes well down to a minimum screen width of 320px
+  - Authorization
+    - Redirects user to main page if already logged out
+  - 'Sign Out' button
+    - Correctly logs the user out
+    - Redirects user to main page as intended
+
+#### 12. 404 Page
+  - Responsiveness
+    - Resizes well down to a minimum screen width of 320px
+  - 'Return Home' button
+    - Correctly redirects user to main page
+
+#### 13. Footer
+  - Responsiveness
+    - Resizes well down to a minimum screen width of 320px
+    - On small-medium screen sizes the disclaimer and social links stack vertically as intended
+  - Social links
+    - Correctly change color on hover
+    - The GitHub link opens in a new tab as intended
+    - The LinkedIn link opens in a new tab as intended
+
+### Discovered Bugs
+- The bootstrap offcanvas backdrop was covering every element, including the actual offcanvas.
+  - This was due to the offcanvas using a modal-backdrop which has a z-index of 1050 whereas the offcanvas had a lower z-index of 1045.
+    - This bug was fixed in a newer version of bootstrap 5 and as such has been updated.
+
+- Attempting to search for products using the search bar would throw the exception: TypeError at /products/ - object of type 'method' has no len() during search
+  - This was caused by a typo in the search filter, using "distinct" instead of the method "distinct()"
+
+- On the cart and checkout page, the subtotal was incorrectly calculated for items without variants.
+  - This was due to a wrongly assigned variable in the cart items context, setting the price to product.price rather than the variable "price"
+
+- Searching for products in the django admin menu would throw an exception
+  - This was due to one of the search fields being ['brand'] rather than ['brand__name'], returning a model rather than the brand name
+
+- The add/edit/remove product page displayed a "Not authorized" message but didn't actually redirect unathourized users
+  - This was due to missing "return redirect()" and instead just "redirect()" in the products view
