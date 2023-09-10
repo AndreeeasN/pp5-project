@@ -162,6 +162,7 @@ def edit_product(request, product_id):
                 request,
                 "Successfully updated product!"
             )
+            return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(
                 request,
