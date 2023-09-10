@@ -10,10 +10,10 @@
         <div class="col-12 col-sm-10 offset-sm-1 col-xl-8 offset-xl-2 col-xxl-6 offset-xxl-3">
             <!-- Header and 'continue shopping' link -->
             <div class="row">
-                <div class="d-flex col-6 align-items-center">
+                <div class="d-flex col-6 align-items-center pe-0">
                     <h1 class="justify-content-start py-4 m-0">Your Cart</h1>
                 </div>
-                <div class="d-flex col-6 align-items-center justify-content-end">
+                <div class="d-flex col-6 align-items-center justify-content-end ps-0">
                     <a class="link-dark link-underline-opacity-50 link-underline-opacity-100-hover" href="{% url 'products' %}">Continue Shopping</a>
                 </div>
                 <hr>
@@ -22,7 +22,7 @@
             <!-- Table of cart contents -->
             <div class="row">
                 {% if cart_items %}
-                    <div class="table-responsive rounded px-0 px-sm-1">
+                    <div class="table-responsive rounded px-1">
                         <table class="table table-sm table-borderless">
                             <thead>
                                 <tr>
@@ -106,7 +106,7 @@
                         </table>
                         <div class="container-fluid col-12 col-md-6 offset-md-6">
                             <div class="pt-4 text-end">
-                                <h6><strong>Bag Total: ${{ total|floatformat:2 }}</strong></h6>
+                                <h6><strong>Cart Total: ${{ total|floatformat:2 }}</strong></h6>
                                 <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
                                 <h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
                                 {% if free_delivery_delta > 0 %}

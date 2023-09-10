@@ -37,7 +37,7 @@
 
                     {% for item in cart_items %}
                         <div class="row">
-                            <div class="col-2 mb-1">
+                            <div class="col-2 mb-1 pe-0">
                                 <a href="{% url 'product_detail' item.product.id %}">
                                     <div class="square-img-container">
                                         {% if item.product.image %}

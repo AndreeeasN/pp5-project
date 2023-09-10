@@ -77,6 +77,11 @@ footer a:hover{
     z-index: 1060;
 }
 
+#btt-button:hover{
+    color: #fecc00;
+    text-shadow: 0 2px 10px black;
+}
+
 .show-pointer{
     cursor: pointer;
 }
@@ -102,6 +107,7 @@ footer a:hover{
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
 }
+
 /* Pagination wraps on smaller devices */
 .pagination{
     flex-wrap: wrap;
@@ -157,13 +163,14 @@ footer a:hover{
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
 input[type=number] {
-  -moz-appearance: textfield;
+    appearance: textfield;
+    -moz-appearance: textfield;
 }
 
 /* Media Queries */
