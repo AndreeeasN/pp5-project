@@ -11,8 +11,24 @@ Whether creating your own candy mix or choosing from our pre-mixed selection, yo
 
 ### User Demographic
 
-SWEtooth Candy Shop was built for candy enthusiasts of all ages, adults looking for a taste of nostalgia, young adults celebrating special occasions or curious individuals simply looking to explore Swedish candy traditions.
-For those wanting to share some sweetness, the store also offers gift solutions such as gift wrapping/boxes/baskets to turn their order into a delightful gift worth remembering.
+SWEtooth Candy Shop was built for candy enthusiasts ages 18-50, adults looking for a taste of nostalgia, young adults celebrating special occasions or curious individuals simply looking to explore Swedish candy traditions.<br>
+As candy is *(and has always been)* a favourite amongst children, kid-centric families with ties to Sweden or Scandinavia are also an important demographic.<br>
+
+As Swedish confectionery is readily available in most Swedish supermarkets, our demographic will primarily be outside of Sweden. 
+This means all purchases will be delivered by shipping package, and as such the store offers gift solutions such as gift wrapping/boxes/baskets to turn their otherwise plain order into something more vivid and memorable.
+
+### Business Model
+
+SWEtooth Candy Co. operates on a Business-to-Customer (B2C) model, focusing on providing a simple and enjoyable shopping experience for the customer, with a goal of fostering return visits.
+
+As customer retention is a primary concern, interacting with customers and building a connection through social media has become an integral part of SWEtooth's marketing strategy.
+Not only does this help with customer retention, but it also attracts individuals and families who share similar tastes and preferences to our current customer base.
+To further increase chances of return visits, our monthly newsletter provides insight into both newly added products, special offers and seasonal sales to garner interest.
+
+SWEtooth Candy Co. uses Facebook as it's central marketing platform.
+However, to avoid the risk of deactivation from Facebook due to being a non-authentic business page, I've opted to create a straightforward mockup in its stead.
+
+![Facebook Mockup](static/images/readme/pp5-facebook-mockup.png)
 
 ### User Stories
 
@@ -253,15 +269,15 @@ The header logo was made using 'Franklin Gothin Medium'.
     - Correctly displays the amount of products displayed
     - Sorts both by name/price, both ascending and descending correctly
 - Pagination
-      - Enumerated page selector
-        - Correctly displays and highlights the current page
-        - Correctly redirects to intended page number on click
-      - 'Next' and 'Previous' buttons
-        - Correctly jumps forward or back one page on click
-        - Correctly hides if on the first / last page
-      - 'First' and 'Last' buttons
-        - Correctly jumps to the first / last available page on click
-        - Correctly hides if on the first/last page
+    - Enumerated page selector
+      - Correctly displays and highlights the current page
+      - Correctly redirects to intended page number on click
+    - 'Next' and 'Previous' buttons
+      - Correctly jumps forward or back one page on click
+      - Correctly hides if on the first / last page
+    - 'First' and 'Last' buttons
+      - Correctly jumps to the first / last available page on click
+      - Correctly hides if on the first/last page
 
 #### 4. Product Details Page
   - Responsiveness
@@ -334,8 +350,8 @@ The header logo was made using 'Franklin Gothin Medium'.
     - Redirects user to home page if logged in user is not superuser or owner of the post
   - Product form
     - Correctly auto-fills fields with pre-existing information 
-  - 'Submit Thought' button
-    - Correctly submits thought form and updates/creates product
+  - 'Add / Update' button
+    - Correctly submits product form and updates/creates product
     - Redirects to affected product as intended
   
 #### 8. Sign up Page
