@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Poppins&display=swap');
+
 html{
     height: 100%;
 }
@@ -7,6 +9,7 @@ body{
     padding-top: 144px;
     display: flex;
     flex-direction: column;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Footer */
@@ -33,11 +36,13 @@ footer a:hover{
 #desktop-nav{
     color: white;
     background-color: #0169A8;
+    font-family: 'Inter', sans-serif;
 }
 
 #mobile-nav{
     color: white;
     background-color: #0169A8;
+    font-family: 'Inter', sans-serif;
 }
 
 /* Buttons */
