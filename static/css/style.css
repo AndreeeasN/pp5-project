@@ -129,6 +129,10 @@ footer a:hover{
     border-radius: 5px;
 }
 
+.newsletter-container{
+    background-color: #eeeeee;
+}
+
 /* Offcanvas */
 .offcanvas-header{
     color: white;

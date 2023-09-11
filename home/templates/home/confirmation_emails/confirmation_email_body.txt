@@ -1,0 +1,10 @@
+Thank you for signing up for the SWEtooth Candy Co. Newsletter!
+
+{% if seasonal_promotions %}You've selected to receive seasonal promotions.{% endif %}
+As this website is a student project and entirely for educational purposes, 
+no further newsletters will be sent to this address.
+
+If you have any questions, we can be reached at {{ contact_email }}.
+Sweetest Regards,
+
+SWEtooth Candy Co.
