@@ -124,28 +124,43 @@
     </div>
 </div>
 
+ <!-- Newsletter Signup (Embedded MailChimp form) -->
 <div class="container-fluid newsletter-container py-5 my-3">
     <div class="row">
-        <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-xl-4 offset-xl-4">
-            <h3>Sign-up for our newsletter!</h3>
-            <p>Receive monthly updates on our latest products and exclusive offers!</p>
-            
-            <form action="{% url 'newsletter_signup' %}" method="POST" id="newsletter-form">
-                {% csrf_token %}
-                <p class="form-floating my-1">
-                    <input type="text" class="form-control" name="email" placeholder="Name@example.com" autocomplete="email" required id="id_email">
-                    <label for="id_email">Email</label>
-                </p>
-                <div class="mb-3">
-                    <input type="checkbox" name="promotions" id="id_promotions">
-                    <label for="id_promotions">Receive notifications for Seasonal Promotions</label> 
-                </div>
-                <button class="btn btn-blue py-2 px-4 w-100" type="submit">Sign Up!</button>
-            </form>
+        <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-xl-4 offset-xl-4 p-3 p-md-0">
+            <div id="mc_embed_shell">
+                <div id="mc_embed_signup">
 
+                    <form action="https://gmail.us21.list-manage.com/subscribe/post?u=b5da45b5686c0282aa8562562&amp;id=5de5488d71&amp;f_id=0098dde6f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self" novalidate="">
+                        <div id="mc_embed_signup_scroll"><h2>Sign-up for our newsletter!</h2>
+                            <p>Receive monthly updates on our latest products and exclusive offers!</p>
+                            <div class="mc-field-group form-floating">
+                                <input type="email" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Name@example.com" required="" value="">
+                                <label for="mce-EMAIL">Email Address<span class="asterisk">*</span></label>
+                                <span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+                            </div>
+                            <div id="mce-responses" class="clear foot">
+                                <div class="response" id="mce-error-response" style="display: none;"></div>
+                                <div class="response" id="mce-success-response" style="display: none;"></div>
+                            </div>
+                            <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                                /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+                                <input type="text" name="b_b5da45b5686c0282aa8562562_5de5488d71" tabindex="-1" value="">
+                            </div>
+                            <div class="optionalParent">
+                                <div class="clear foot">
+                                    <input type="submit" name="subscribe" id="mc-embedded-subscribe"
+                                    class="button btn btn-blue py-3 px-4 mt-3 w-100" value="Subscribe">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</div>           
 {% endblock %}
 
 {% block postloadjs %}
