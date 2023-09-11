@@ -36,7 +36,11 @@ The full project board can be found [here](https://github.com/users/AndreeeasN/p
 ?COLOR SCHEME:
 
 ### Typography:
-?FONTS USED:
+The following fonts were obtained from the Google Fonts Library:
+- 'Inter' - used for the mobile and desktop navbar
+- 'Poppins' - used for the general site content
+
+The header logo was made using 'Franklin Gothin Medium'.
 
 ## Wireframes
 - Home page<br>
@@ -50,10 +54,11 @@ The full project board can be found [here](https://github.com/users/AndreeeasN/p
 - Checkout page<br>
 ![Checkout page](static/images/readme/pp5-wireframe-checkout.png)
 
+- While the design has mostly adhered to the initial wireframes, the "Browse by Category" button in the navbar was changed from opening a dropdown to opening a sidenav for stylistic reasons.
 
 ## Database Schema
-?ERD:
 
+![Database Schema](static/images/readme/pp5-erd.png)
 
 ## Features
 
@@ -319,7 +324,7 @@ The full project board can be found [here](https://github.com/users/AndreeeasN/p
   - Complete Order
     - On successful payment correctly redirects to order confirmation
       - The order confirmation is also sent to the entered email
-        - ?REQUIRES TESTING
+        - ?REQUIRES LIVE TESTING
       - "Return to Home Page" redirects to home page as intended
 
 #### 7. 'Add / Edit Product' pages
@@ -380,9 +385,8 @@ The full project board can be found [here](https://github.com/users/AndreeeasN/p
     - Resizes well down to a minimum screen width of 320px
     - On small-medium screen sizes the disclaimer and social links stack vertically as intended
   - Social links
-    - Correctly change color on hover
-    - The GitHub link opens in a new tab as intended
-    - The LinkedIn link opens in a new tab as intended
+    - Correctly changes color on hover
+    - All external social links open in a separate tab as intended
 
 ### Discovered Bugs
 - The bootstrap offcanvas backdrop was covering every element, including the actual offcanvas.
@@ -400,3 +404,131 @@ The full project board can be found [here](https://github.com/users/AndreeeasN/p
 
 - The add/edit/remove product page displayed a "Not authorized" message but didn't actually redirect unathourized users
   - This was due to missing "return redirect()" and instead just "redirect()" in the products view
+
+### Unfixed Bugs
+
+### Validator Testing
+- Html
+  - All html pages pass through the [W3C Validator](https://validator.w3.org/) without issues
+- CSS
+  - CSS files pass through the [W3C jigsaw validator](https://jigsaw.w3.org/css-validator/) without errors<br>
+  ![w3C Validator](static/images/readme/pp5-validation-css.png)
+- Python
+  - Python files pass through the [CI Python linter](https://pep8ci.herokuapp.com/) without issues
+- Lighthouse audit<br>
+  ![Lighthouse Audit](static/images/readme/pp5-lighthouse-audit.png)
+- The website has been tested to work in the following browsers:
+  - Google Chrome
+  - Mozilla Firefox
+  - Microsoft Edge
+
+## Technologies Used
+
+### Main Languages Used
+- HTML5
+- CSS
+- Javascript
+- Python
+- SQL - Postgres
+
+### Frameworks, Libraries & Programs Used
+- GitHub
+- Visual Studio Code
+- Django
+- Bootstrap 5
+- JQuery
+- Font Awesome
+- Balsamiq
+- Paint.NET
+- Favicon.io
+
+### Installed Packages
+- Django
+- django-allauth
+- psycopg2-binary
+- gunicorn
+- django-crispy-forms
+- crispy-bootstrap5
+- dj_database_url
+- boto3 
+- django-storages
+- stripe
+- django-countries
+
+## Deployment
+
+### Heroku
+The app was deployed to [Heroku](https://www.heroku.com/) using the following steps:
+
+1. Ensure the following packages are installed to use Heroku, ElephantSQL and Amazon Web Services:
+    - Django
+    - gunicorn
+    - dj_database_url
+    - psycopg2
+    - boto3
+    - django-storages
+2. Create a requirements.txt file using the following command
+    - ```pip3 freeze --local > requirements.txt```
+2. Create a new app from the [Heroku dashboard](https://dashboard.heroku.com/apps)
+3. Select your heroku app from the menu and enter the 'Settings' tab
+4. Click 'Reveal Config Vars'
+5. Input all relevant key:value pairs
+    - ```SECRET KEY : (Your secret key)```
+    - ```PORT : 8000```
+    - ```DATABASE_URL : (Your ElephantSQL postgres URL)```
+    - ```AWS_ACCESS_KEY_ID : (Your AWS access key)```
+    - ```AWS_SECRET_ACCESS_KEY : (Your AWS secret access key)```
+6. Underneath, click 'Add Buildpack' and select the Python Buildpack
+7. Set up your Amazon Web Services Bucket (instructions by Code Institute found here: [link](https://codeinstitute.s3.amazonaws.com/fullstack/AWS%20changes%20sheet.pdf))
+8. Add the following to your project settings.py:
+    - ```ALLOWED_HOSTS = [(Your heroku app url), '127.0.0.1']```  (second address included for local testing)
+    - AWS Bucket variables:
+      - ```AWS_STORAGE_BUCKET_NAME = (Your bucket name)```
+      - ```AWS_S3_REGION_NAME = (Your bucket region name)```
+      - ```AWS_ACCESS_KEY_ID = (Your AWS access key)```
+      - ```AWS_SECRET_ACCESS_KEY = (Your AWS secret access key)```
+      - ```AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'```
+    - Static and media files
+      - ```STATICFILES_STORAGE = 'custom_storages.StaticStorage'```
+      - ```STATICFILES_LOCATION = 'static'```
+      - ```DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'```
+      - ```MEDIAFILES_LOCATION = 'media'```
+    - Static and media file URLs
+      - ```STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'```
+      - ```MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'```
+9. Create a Procfile with the following line
+    - ```web: gunicorn (YOUR_APP_NAME).wsgi:application```
+10. Commit and push changes to GitHub
+11. Go to your Heroku app and select the 'Deploy' tab
+12. Select your deployment method, in our case we deployed through GitHub
+13. From here you can either:
+    - Deploy your project manually using the 'Deploy Branch' button.
+    - Enable Automatic deploys to deploy everytime a new commit is pushed to the repository.
+14. After a short time your app should be deployed and available from the 'Open App' button in the top right corner
+
+
+## Credits
+
+### Media:
+- Home Page
+  - [Hemmakväll](https://www.mynewsdesk.com/se/hemmakvall/images) - Carousel image 1 & 2, featured content image 1 & 2
+  - [Agnes Jostelius](https://unsplash.com/photos/GxdlD9MuVOw) - Carousel image 3 (Bowl of candy)
+  - [Sakligheter](https://www.sakligheter.se/) - Home page featured content 3 (Gift box)
+- Assorted Candy, Candy mixes and Pre-packaged Candy
+  - [Cloetta.se](https://www.cloetta.se/varumarken-och-produkter/cloettas_losviktsgodis/)
+  - [Malaco/Cloetta](https://www.cloetta.se/malaco)
+  - [Bubs Godis](https://bubs.se/produkter/)
+
+### Fonts used:
+- 'Inter' - By Rasmus Andersson
+- 'Poppins' - By Indian Type Foundry, Jonny Pinhorn
+
+### Code Snippets used:
+- [Code Institute](https://github.com/ckz8780/boutique_ado_v1) - Boutique Ado Walkthrough Project, used for setting up AWS and Stripe
+- [StackOverflow](https://stackoverflow.com/a/67526160) - Replacing part of url through templating by Mojtaba Arezoomand, used for paginating search results
+- [StackOverflow](https://stackoverflow.com/questions/30864011/display-only-some-of-the-page-numbers-by-django-pagination/46329564#46329564) - Enumerated pagination bar by Rob L, adapted to include 'jump to first/last' buttons
+
+### Resources and tutorials used in developing this project:
+- [Code Institute](https://github.com/ckz8780/boutique_ado_v1) - Boutique Ado Walkthrough Project, heavily relied on for setting up Stripe
+- [Code Institute](https://code-institute-students.github.io/deployment-docs/02-elephantsql/elephantsql-01-sign-up) - Setting up ElephantSQL
+- [Code Institute](https://codeinstitute.s3.amazonaws.com/fullstack/AWS%20changes%20sheet.pdf) - Setting up AWS
