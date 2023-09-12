@@ -1,0 +1,20 @@
+{% if messages %}
+    <!-- Message box -->
+    {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible fade show my-0 text-center border-0 rounded-0" id="msg" role="alert">
+            <span id="msg-text">{{ message }}</span> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close message box"></button>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<script>
+    // Automatically closes message box after short delay
+    setTimeout(function () {
+        let messages = document.getElementById("msg");
+        if (messages) {
+            let alert = new bootstrap.Alert(messages);
+            alert.close();
+        }
+    }, 5000);
+</script>

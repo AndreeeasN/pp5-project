@@ -137,18 +137,8 @@
                     </div>
                 </nav>
             </div>
+            {% include 'includes/message_box.html'%}
         </header>
-        
-        {% if messages %}
-        <!-- Message box -->
-            {% for message in messages %}
-            <div class="alert {{ message.tags }} alert-dismissible fade show my-0 text-center border-0 rounded-0" id="msg" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close message box"></button>
-            </div>
-            {% endfor %}
-        {% endif %}
-
         {% block page_header %}
         {% endblock %}
 
@@ -191,7 +181,6 @@
         {% endblock %}
 
         {% include 'includes/sidenav.html' %}
-
     </body>
 
 </html>

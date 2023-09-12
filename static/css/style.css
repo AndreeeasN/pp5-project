@@ -45,6 +45,14 @@ footer a:hover{
     font-family: 'Inter', sans-serif;
 }
 
+/* Bootstrap message box */
+#msg{
+    opacity: 0.95;
+}
+#msg-text{
+    opacity: 1;
+}
+
 /* Buttons */
 .btn-blue{
     color: rgb(240, 240, 240);
