@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block page_header%}
-<div id="heroCarousel" class="carousel slide d-none d-md-block">
+<div id="heroCarousel" class="carousel slide d-none d-md-block" data-bs-theme="dark">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -10,25 +10,19 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="{% static 'images\carousel-pile-of-candy.webp' %}" class="d-block w-100" alt="CAROUSEL 1">
-            <div class="carousel-caption left">
-                <h5>First slide</h5>
-                <p>Text on the left</p>
-            </div>
+            <a href="{% url 'products' %}?category=candy">
+                <img src="{% static 'images\carousel-pile-of-candy.webp' %}" class="d-block w-100" alt="Mix-n-Match - Create your very own candy mix!">
+            </a>
         </div>
         <div class="carousel-item">
-            <img src="{% static 'images\carousel-jar-of-candy.webp' %}" class="d-block w-100" alt="...">
-            <div class="carousel-caption text-right">
-                <h5>Second slide</h5>
-                <p>Text on the right</p>
-            </div>
+            <a href="{% url 'products' %}?category=candy&tags=sweet,sour,chocolate">
+                <img src="{% static 'images\carousel-jar-of-candy.webp' %}" class="d-block w-100" alt="Sweet, sour or chocolate? Why not mix 'em?">
+            </a>
         </div>
         <div class="carousel-item">
-            <img src="{% static 'images\carousel-bowl-of-candy.webp' %}" class="d-block w-100" alt="...">
-            <div class="carousel-caption text-bottom">
-                <h5>Third slide</h5>
-                <p>Text on the left</p>
-            </div>
+            <a href="{% url 'products' %}?category=mixed-bags">
+                <img src="{% static 'images\carousel-bag-of-candy.webp' %}" class="d-block w-100" alt="Can't decide? Enjoy our pre-mixed assortments!">
+            </a>
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
@@ -124,7 +118,7 @@
     </div>
 </div>
 
- <!-- Newsletter Signup (Embedded MailChimp form) -->
+<!-- Newsletter Signup (Embedded MailChimp form) -->
 <div class="container-fluid newsletter-container py-5 my-3">
     <div class="row">
         <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-xl-4 offset-xl-4 p-3 p-md-0">
