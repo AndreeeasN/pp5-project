@@ -9,7 +9,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col ">
-            <h1 class="text-center py-4">
+            <h1 class="text-center py-4 mb-0">
                 {% if search_term %}
                     Search results
                 {% elif current_category %}
@@ -18,6 +18,13 @@
                     Products
                 {% endif %}
             </h1>
+            {% if current_tags %}
+                <p class="text-center muted"> Viewing: 
+                    {% for tag in current_tags %}
+                        <span class="border rounded p-1 bg-tertiary">{{ tag.name | title }}</span>
+                    {% endfor %}
+                </p>
+            {% endif %}
             <hr class="mt-0">
         </div>
     </div>

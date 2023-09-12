@@ -268,6 +268,7 @@ The header logo was made using 'Franklin Gothin Medium'.
     - On smaller screen sizes the pagination bar will wrap around if many pages are available
 - Header  
     - Correctly displays header as the currently viewed category
+      - Correctly displays tags as subheader if present
     - Shows "Search results" on search as intended
 - Products
     - Clicking on a product image or name redirects to it's details page as intended
