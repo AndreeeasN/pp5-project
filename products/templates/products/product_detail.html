@@ -26,9 +26,24 @@
                 <div class="col-12 col-sm-6">
                     <div class="card-body d-flex flex-column">
                         <!-- Name -->
-                        <h1 class="pb-2">{{ product.name }}</h1>
+                        <h1 class="pb-0 mb-1">{{ product.name }}</h1>
+                        <!-- Brand (if one exists) -->
+                        {% if product.brand %}
+                            <span id="brand-name" class="mt-0 mb-2 small">By: 
+                                <!-- Brand website (links to external website) -->
+                                {% if product.brand.website %}
+                                    <a href="{{ product.brand.website }}" class="link-secondary"
+                                    target="_blank" rel="noopener noreferrer" 
+                                    aria-label="Link to {{ product.brand.name }}'s website (Opens in a new tab)">
+                                        {{ product.brand.name }}
+                                    </a>
+                                {% else %}
+                                    {{ product.brand.name }}
+                                {% endif %}
+                            </span>
+                        {% endif %}
                         <!-- Price -->
-                        <p class="mt-auto">
+                        <p class="mt-auto pt-4">
                             <span id="product-price">{{ product.get_minimum_price }} </span> EUR
                         </p>
 

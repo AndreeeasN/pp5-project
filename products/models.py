@@ -39,12 +39,6 @@ class Brand(models.Model):
         """
         return self.name
 
-    def get_website(self):
-        """
-        Returns website of brand
-        """
-        return self.website
-
 
 class ProductTag(models.Model):
     """

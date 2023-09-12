@@ -152,6 +152,7 @@ The header logo was made using 'Franklin Gothin Medium'.
     ![Product details page]()
     - Displays detailed information about the specified product
         - Product image, name, price, quantity selector, description and "Add to cart" are always visible
+          - Product brand shows up if available, links to brand website
         - Size/variant selector only displayed when product has sizes/variants available
             - On selecting a variant the product price label will update to reflect this change
     - If logged in as superuser the page will have 2 extra options:
@@ -285,6 +286,9 @@ The header logo was made using 'Franklin Gothin Medium'.
     - On smaller screen sizes the product image will stack on top of the product information
   - Product information
     - Product image, name, price and description all display correctly
+    - Product brand only shows up if available as intended
+      - If brand has a website brand name will link to the brand website as intended
+        - External site correctly opens in separate tab
     - Products with sizes/variants correctly display a dropdown selection menu
       - Product price label correctly updates on changing variant
   - Quantity selection
