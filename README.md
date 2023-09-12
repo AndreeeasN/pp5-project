@@ -376,7 +376,7 @@ The following fonts were obtained from the Google Fonts Library:
   - Complete Order
     - On successful payment correctly redirects to order confirmation
       - The order confirmation is also sent to the entered email
-        - ?REQUIRES LIVE TESTING
+        - Emails are sent out as intended
       - "Return to Home Page" redirects to home page as intended
 
 #### 7. 'Add / Edit Product' pages
