@@ -124,6 +124,11 @@ The header logo was made using 'Franklin Gothin Medium'.
     ![Featured Content]()
     - 3 cards featuring an image and some information about candy / available products.
     - All cards contain a link to their relevant pages
+- Newsletter Signup<br>
+    ![Newsletter Signup]()
+    - Allows users to enter their email to subscribe to a monthly newsletter.
+    - Signup is an embedded MailChimp form and redirects to a MailChimp confirmation page.
+      - With a free MailChimp account, creating sign up confirmation emails is not possible and as such the mailchimp integration has been kept fairly basic.
 
 #### Products Page
 
@@ -241,12 +246,17 @@ The header logo was made using 'Franklin Gothin Medium'.
 #### 2. Home page
 - Responsiveness
     - Resizes well down to a minimum screen width of 320px
-    - On smaller screen sizes the hero images/carousel is hidden as it doesn't scale well and images + their text aren't visible enough to warrant the screen real estate.
+    - On smaller screen sizes the hero images/carousel is hidden as it doesn't scale well and the images aren't visible enough to warrant the screen real estate.
     - On smaller screen sizes the featured content cards will stack vertically
 - Hero Image / Carousel
-    - ?REQUIRES TESTING
+    - Correctly redirects to intended urls
+    - Rapidly jumping back and forth using the bottom bar might cause a skip in the transition
+      - As this is a harmless visual bug that comes with the bootstrap element I've chosen to leave it as is
 - Featured Content
     - All buttons redirect to their intended Urls
+- Newsletter Signup
+  - Correctly redirects to "Subscription Confirmed" mailchimp page
+    - The "Return to site" redirects to our home page as intended
 - Back-to-top button
     - Appears upon scrolling down as intended
     - Disappears upon scrolling back up as intended
