@@ -5,7 +5,31 @@ Whether creating your own candy mix or choosing from our pre-mixed selection, yo
 ![Am-I-Responsive mockup](static/images/readme/pp5-responsive.png)
 
 ## Table of Contents
-?TABLE OF CONTENTS:
++ [UX](#ux)
+  + [User Demographic](#user-demographic)
+  + [Business Model](#business-model)
+  + [User Stories](#user-stories)
+  + [Typography](#typography)
++ [Wireframes](#wireframes)
++ [Database Schema](#database-schema)
++ [Features](#features)
+  + [Existing Features](#existing-features)
+    + [Navigation](#navigation)
+    + [Main Page](#main-page)
+    + [Products Page](#products-page)
+    + [Product Details Page](#product-details-page)
+    + [Cart Page](#cart-page)
+    + [Checkout Page](#checkout-page)
+    + [User Account](#user-account)
+  + [Future Features](#future-features)
++ [Testing](#testing)
+  + [Manual Testing](#manual-testing)
+  + [Discovered Bugs](#discovered-bugs)
+  + [Unfixed Bugs](#unfixed-bugs)
+  + [Validator Testing](#validator-testing)
++ [Technologies Used](#technologies-used)
++ [Deployment](#deployment)
++ [Credits](#credits)
 
 ## UX
 
@@ -49,14 +73,18 @@ The full project board can be found [here](https://github.com/users/AndreeeasN/p
 - I can sort through the admin menu so I can quickly find what I'm looking for
 
 ### Colour Scheme:
-?COLOR SCHEME:
+- Drawing inspiration from the Swedish flag, the site uses blue and white as it's dominant colors, with touches of yellow serving as an accent color.
+- The navigational elements in the navbar are white, but turn yellow when hovered for a playful touch.
+- The front page features carousel images in a soft pastel pink, with splotches of color from an array of swedish candy to incite a sense of playfulness and excitement.
+- For the sake of legibility, black text on white backgrounds is used throughout a majority of the site, providing a clean and modern design while ensuring sufficient contrast.
 
 ### Typography:
-The following fonts were obtained from the Google Fonts Library:
-- 'Inter' - used for the mobile and desktop navbar
-- 'Poppins' - used for the general site content
+- 'Segoe UI' & 'Arial' - Used for the SWEtooth logo
+- 'Arial Rounded MT Bold' - Used for flavour text on carousel images
 
-The header logo was made using 'Franklin Gothin Medium'.
+The following fonts were obtained from the Google Fonts Library:
+  - 'Inter' - used for the mobile and desktop navbar
+  - 'Poppins' - used for the general site content
 
 ## Wireframes
 - Home page<br>
@@ -86,46 +114,42 @@ The header logo was made using 'Franklin Gothin Medium'.
     - Brings user to the home page on click
 - Search bar
     - The Search bar allows the user to search for products by their name, description and product tags<br>
-    ![Search bar]()
     - The search function is accessible from all pages, and the search results are displayed on the products page.
     - On smaller screens the search bar will be moved into the sidenav to save space.
 - Mobile Navbar
     - On smaller screens the navigation bar only contains 3 elements: Browse, Login and Cart.
     - All hidden navigational elements are available from the Sidenav which can be opened using the "Browse" button
 - Sidenav<br>
-    ![Sidenav]()
+    ![Sidenav](static/images/readme/pp5-sidenav.png)
     - The side navigation can be opened by clicking "Browse by Category" from the desktop navigation bar, or the "Browse" button on mobile.
     - The sidenav contains all categories and a few subcategories.
     - All links lead to the products page using different category/tag/search criteria.
 - Log in / Sign up<br>
-    ![Navbar logged out]()
     - When not logged in displays a link to log in or sign up
 - Profile Name<br>
-    ![Navbar dropdown]()
     - When logged in displays a dropdown menu where your user profile and log out button can be found.
     - If logged in as a superuser the "Add product" page and Admin Menu can be accessed from here.
 - Cart<br>
-    ![Cart]()
     - Takes user to their cart on click
     - If cart currently contains items a red notification will be display the amount
         - "Cart" will also be replaced with the total of all contained items
 - Back-to-top Button<br>
-    ![BTT button]()
+    ![Back to Top button](static/images/readme/pp5-btt-button.png)
     - When scrolling a certain distance on longer pages, a button appears in the bottom right corner
         - Pressing this button will scroll back to the top of the page, helping the user should they want to scroll back to the top
 
 #### Main Page
 - Hero Image / Carousel<br>
-    ![Carousel]()
+    ![Carousel](static/images/readme/pp5-carousel.png)
     - A simple Bootstrap 5 carousel featuring 3 different images that can be scrolled through.
     - All images are clickable and lead to relevant pages.
     - Hidden on smaller screen sizes.
 - Featured Content<br>
-    ![Featured Content]()
+    ![Featured Content](static/images/readme/pp5-featured.png)
     - 3 cards featuring an image and some information about candy / available products.
     - All cards contain a link to their relevant pages
 - Newsletter Signup<br>
-    ![Newsletter Signup]()
+    ![Newsletter Signup](static/images/readme/pp5-newsletter.png)
     - Allows users to enter their email to subscribe to a monthly newsletter.
     - Signup is an embedded MailChimp form and redirects to a MailChimp confirmation page.
       - With a free MailChimp account, creating sign up confirmation emails is not possible and as such the mailchimp integration has been kept fairly basic.
@@ -133,7 +157,7 @@ The header logo was made using 'Franklin Gothin Medium'.
 #### Products Page
 
 - Products<br>
-    ![Products]()
+    ![Products](static/images/readme/pp5-products-page.png)
     - Products are displayed in grid pattern showing the product's name and price
     - Each product has it's own "Add to cart" button
         - If the product has sizes / variants this will be replace with a "Choose Options" button that leads to the relevant product details page where a size can be chosen.
@@ -141,11 +165,10 @@ The header logo was made using 'Franklin Gothin Medium'.
         - "Edit" - Allows the user to change details about the product (Name, price, category, brand, tags, sizes, image etc.)
         - "Delete" - Removes the product from the database entirely
 - "Sort By" Dropdown<br>
-    ![Sort By]()
     - Allows the user to sort their search by name and price, either ascending or descending
     - Displays how many products are present in the current category/search
 - Pagination<br>
-    ![Pagination]()
+    ![Pagination](static/images/readme/pp5-pagination.png)
     - When the amount of products in a category/search exceeds a maximum they are split into pages and a page selection bar is displayed at the bottom of the products page.
     - The page selector allows the following actions:
         - Jump one page forward / back
@@ -154,7 +177,7 @@ The header logo was made using 'Franklin Gothin Medium'.
 
 #### Product Details Page
 - Product details<br>
-    ![Product details page]()
+    ![Product details page](static/images/readme/pp5-product-details.png)
     - Displays detailed information about the specified product
         - Product image, name, price, quantity selector, description and "Add to cart" are always visible
           - Product brand shows up if available, links to brand website
@@ -166,7 +189,7 @@ The header logo was made using 'Franklin Gothin Medium'.
 
 #### Cart Page
 - Your Cart<br>
-    ![Your Cart]()
+    ![Your Cart](static/images/readme/pp5-cart.png)
     - Displays all items the user has added to their cart
         - Each product displays the following:
             - Name, SKU, price, quantity and subtotal
@@ -181,38 +204,36 @@ The header logo was made using 'Franklin Gothin Medium'.
  
  #### Checkout Page
  - Checkout<br>
-    ![Checkout]()
+    ![Checkout](static/images/readme/pp5-checkout.png)
     - Form containing billing details, delivery address and payment information for completing the transaction
         - Form has a checkbox to save delivery information to user profile
             - Saved delivery information can be changed from user profile
             - Replaced with text to sign up/log in if not logged in
     - Displays simple order summary of all cart items and the grand total
     - "Adjust Cart" takes user back to the Cart page
-    - The "Complete Order" button uses the form information to attempt a monetary transaction through Stripe.
+    - The "Complete Order" button uses the form information to attempt a transaction through Stripe.
         - On succesful payment the user is shown an order confirmation that is also sent to their registered email.<br>
-        ![Order Confirmation]()
+        ![Order Confirmation](static/images/readme/pp5-order-confirmation.png)
 
 #### User Account
 - My Profile<br>
-    ![Profile]()
+    ![Profile](static/images/readme/pp5-profile.png)
     - Displays a form containing delivery information if entered by user.
         - This information will auto-fill the form for delivery information during checkouts
     - Also provides a list of previous orders
-        - By clicking the order number the user may see the full order confirmation<br>
-        ![Order Confirmation]()
+        - By clicking the order number the user may see the full order confirmation
 - Sign in<br>
-![Sign in page]()
+![Sign in page](static/images/readme/pp5-sign-in.png)
 - Sign up<br>
-![Sign up page]()
+![Sign up page](static/images/readme/pp5-sign-up.png)
 - Sign out<br>
-![Sign out page]()
+![Sign out page](static/images/readme/pp5-sign-out.png)
 
 ### Future Features
-- Tag dropdown in product search
+- Tag dropdown/search on products page
 - Make "Update" quantity in cart automatic
 - "About" page
-- FAQ page
-
+- FAQ page (Delivery, allergies etc.)
 
 ## Testing
 
@@ -472,6 +493,8 @@ The header logo was made using 'Franklin Gothin Medium'.
 - Balsamiq
 - Paint.NET
 - Favicon.io
+- Blender
+- DrawSQL
 
 ### Installed Packages
 - Django
@@ -545,12 +568,17 @@ The app was deployed to [Heroku](https://www.heroku.com/) using the following st
   - [Hemmakväll](https://www.mynewsdesk.com/se/hemmakvall/images) - Carousel image 1 & 2, featured content image 1 & 2
   - [Agnes Jostelius](https://unsplash.com/photos/GxdlD9MuVOw) - Carousel image 3 (Bowl of candy)
   - [Sakligheter](https://www.sakligheter.se/) - Home page featured content 3 (Gift box)
-- Assorted Candy, Candy mixes and Pre-packaged Candy
+- Assorted Candy and Pre-packaged Candy
   - [Cloetta.se](https://www.cloetta.se/varumarken-och-produkter/cloettas_losviktsgodis/)
   - [Malaco/Cloetta](https://www.cloetta.se/malaco)
   - [Bubs Godis](https://bubs.se/produkter/)
+- Gift Solutions, and Carousel image 3
+  - Ferran Texidó Hidalgo - All 3d-modelled, textured and rendered in less than 2 days(!?)
 
 ### Fonts used:
+
+- 'Segoe UI' - By Steve Matteson
+- 'Arial' - By Robin Nicholas and Patricia Saunders
 - 'Inter' - By Rasmus Andersson
 - 'Poppins' - By Indian Type Foundry, Jonny Pinhorn
 
@@ -563,3 +591,6 @@ The app was deployed to [Heroku](https://www.heroku.com/) using the following st
 - [Code Institute](https://github.com/ckz8780/boutique_ado_v1) - Boutique Ado Walkthrough Project, heavily relied on for setting up Stripe
 - [Code Institute](https://code-institute-students.github.io/deployment-docs/02-elephantsql/elephantsql-01-sign-up) - Setting up ElephantSQL
 - [Code Institute](https://codeinstitute.s3.amazonaws.com/fullstack/AWS%20changes%20sheet.pdf) - Setting up AWS
+
+### Extra Credits
+Huge thanks goes out to Ferran Texidó Hidalgo for helping produce a plethora of beautifully rendered visuals on such a short notice!
