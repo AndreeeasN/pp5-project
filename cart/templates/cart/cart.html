@@ -27,7 +27,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Product Info</th>
-                                    <th scope="col" class="d-none d-sm-table-cell"></th>
+                                    <th scope="col" class="d-none d-sm-table-cell" aria-label="Product Name, Size, SKU"></th>
                                     <th scope="col" class="text-center">Price</th>
                                     <th scope="col" class="text-center">Qty</th>
                                     <th scope="col" class="text-center">Subtotal</th>
@@ -63,13 +63,13 @@
                                     </td>
                                     <td class="py-3 px-1 text-center">
                                         <div class="my-0">
-                                            <!-- {{ item.quantity }} -->
+                                            <!-- Product quantity -->
                                             <form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_key %}">
                                                 {% csrf_token %}
                                                 <div class="form-group">
                                                     <div class="input-group qty-div justify-content-center">
                                                         <div class="input-group-prepend">
-                                                            <button class="decrement-qty btn btn-sm"
+                                                            <button class="decrement-qty btn btn-sm"  aria-label="Decrease item quantity by 1"
                                                             data-item-id="{{ item.item_key }}" id="decrement-qty-{{ item.item_key }}">
                                                             <span>
                                                                 <i class="fa-solid fa-minus fa-sm"></i>
@@ -77,12 +77,13 @@
                                                             </button>
                                                         </div>
             
-                                                        <input class="form-control qty-input rounded-2" type="number"
+                                                        <input class="form-control qty-input rounded-2" type="number" aria-label="Quantity"
                                                         name="quantity" value="{{ item.quantity }}" min="1" max="99"
                                                         data-item-id="{{ item.item_key }}" id="id-qty-{{ item.item_key }}">
                                                         
+
                                                         <div class="input-group-append">
-                                                            <button class="increment-qty btn btn-sm"
+                                                            <button class="increment-qty btn btn-sm" aria-label="Increase item quantity by 1"
                                                             data-item-id="{{ item.item_key }}" id="increment-qty-{{ item.item_key }}">
                                                             <span>
                                                                 <i class="fa-solid fa-plus fa-sm"></i>
